@@ -1,2 +1,0 @@
-C:/Users/Utilizador/Documents/2Ano/2_Semestre/DA/DA_T1_G103/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Utilizador/Documents/2Ano/2_Semestre/DA/DA_T1_G103/cmake-build-debug/CMakeFiles/rebuild_cache.dir
