@@ -22,7 +22,7 @@ bool Courier::removeProduct(Product &product) {
     auto it = find(products.begin(), products.end(), product); // memory position of &product
     if (it == products.end()) return false; // If &product doesn't exist in the products vector
     products.erase(it); // If it exists, remove it
-
+    
     return true;
 }
 
