@@ -6,6 +6,7 @@
 #define UNTITLED_COURIER_H
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #include "Product.h"
 
 using namespace std;
@@ -22,14 +23,13 @@ private:
 public:
     Courier(string name, string plate, int maxVolume, int maxWeight, int cost, vector<Product> products);
     vector<Product> getProducts() const;
-    void addProducts();
-    void removeProduct(Product &product);
+    void addProducts(Product &product);
+    bool removeProduct(Product &product);
     double getMaxVolume();
     double getMaxWeight();
     string getName();
     int getCost();
     string getPlate();
-
 };
 
 
