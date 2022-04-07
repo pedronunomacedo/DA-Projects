@@ -8,6 +8,8 @@
 #include <vector>
 #include <algorithm>
 #include "Product.h"
+#include <string>
+#include <vector>
 
 using namespace std;
 
