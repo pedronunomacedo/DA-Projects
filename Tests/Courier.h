@@ -15,15 +15,15 @@ using namespace std;
 
 class Courier {
 private:
-    string name;
-    string plate;
+    //string name;
+    //string plate;
     int maxVolume;
     int maxWeight;
     int cost;
     vector<Product> products;
 
 public:
-    Courier(string name, string plate, int maxVolume, int maxWeight, int cost, vector<Product> products);
+    Courier(int maxVolume, int maxWeight, int cost);
     vector<Product> getProducts() const;
     void addProducts(Product &product);
     bool removeProduct(Product &product);
