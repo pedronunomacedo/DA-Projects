@@ -37,25 +37,16 @@ void Product::setDuration(int duration) {
 }
 
 ostream &operator<<(ostream &os, const Product &product) {
-    os << "weight: " << product.weight << " volume: " << product.volume << " reward: " << product.reward
-       << " duration: " << product.duration;
+    os << "weight: " << product.getWeight() << " volume: " << product.getVolume() << " reward: " << product.getReward()
+       << " duration: " << product.getDuration();
     return os;
 }
 
-void Product::readFile(string fname) {
 
-
+bool Product::operator<(const Product &rhs) const {
+    return volume < rhs.volume;
 }
 
-bool Product::readFile(string &f) {
-    string line;
-    ifstream file(fname);
-    getline(file, line);
-    while(getline(file, line)) {
-        istringstream iss(line);
-        iss >> volume >> weight >> reward >> duration;
-        Product p(weight, volume, reward, duration);
-
-    }
-    return false;
+bool Product::operator==(const Product &rhs) const {
+    return weight < rhs.weight;
 }

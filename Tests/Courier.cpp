@@ -45,3 +45,11 @@ int Courier::getCost() {
 string Courier::getPlate() {
     return plate;
 }
+
+bool Courier::operator<(const Courier &rhs) const {
+    return maxVolume < rhs.maxVolume;
+}
+
+bool Courier::operator==(const Courier &rhs) const {
+    return maxWeight < rhs.maxWeight;
+}

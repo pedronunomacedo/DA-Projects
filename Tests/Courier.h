@@ -32,6 +32,8 @@ public:
     string getName();
     int getCost();
     string getPlate();
+    bool operator<(const Courier &rhs) const;
+    bool operator==(const Courier &rhs) const;
 };
 
 

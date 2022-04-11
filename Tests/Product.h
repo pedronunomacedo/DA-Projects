@@ -5,6 +5,8 @@
 #ifndef UNTITLED_PRODUCTS_H
 #define UNTITLED_PRODUCTS_H
 #include <iostream>
+#include <fstream>
+#include <sstream>
 using namespace std;
 
 class Product {
@@ -34,7 +36,9 @@ public:
 
     friend ostream &operator<<(ostream &os, const Product &product);
 
-    bool readFile(string &f);
+    bool operator<(const Product &rhs) const;
+
+    bool operator==(const Product &rhs) const;
 };
 
 
