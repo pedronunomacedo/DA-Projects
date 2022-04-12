@@ -28,11 +28,12 @@ public:
     vector<Product> getProducts() const;
     void addProducts(Product &product);
     bool removeProduct(Product &product);
-    double getMaxVolume();
-    double getMaxWeight();
-    string getName();
-    int getCost();
-    string getPlate();
+    int getMaxVolume() const;
+    int getMaxWeight() const;
+    string getName() const;
+    int getCost() const;
+    string getPlate() const;
+    friend ostream &operator<<(ostream &os, const Courier &courier);
     bool operator<(const Courier &rhs) const;
     bool operator==(const Courier &rhs) const;
 };

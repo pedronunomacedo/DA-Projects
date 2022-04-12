@@ -1,7 +1,7 @@
 #include "Product.h"
 #include <string>
 
-Product::Product(double volume, double weight, int reward, int duration) : volume(volume),weight(weight),
+Product::Product(int volume, int weight, int reward, int duration) : volume(volume),weight(weight),
 reward(reward), duration(duration) {}
 
 double Product::getWeight() const {
@@ -44,6 +44,9 @@ ostream &operator<<(ostream &os, const Product &product) {
 
 
 bool Product::operator<(const Product &rhs) const {
+    if (volume == rhs.volume){
+        return weight < rhs.weight;
+    }
     return volume < rhs.volume;
 }
 

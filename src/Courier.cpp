@@ -26,27 +26,29 @@ bool Courier::removeProduct(Product &product) {
     return true;
 }
 
-double Courier::getMaxVolume() {
+int Courier::getMaxVolume() const {
     return maxVolume;
 }
 
-double Courier::getMaxWeight() {
+int Courier::getMaxWeight() const {
     return maxWeight;
 }
 
-string Courier::getName() {
+string Courier::getName() const {
     return name;
 }
 
-int Courier::getCost() {
+int Courier::getCost() const {
     return cost;
 }
 
-string Courier::getPlate() {
+string Courier::getPlate() const {
     return plate;
 }
 
 bool Courier::operator<(const Courier &rhs) const {
+    if (maxVolume == rhs.maxVolume)
+        return maxWeight < rhs.maxWeight;
     return maxVolume < rhs.maxVolume;
 }
 
@@ -55,3 +57,8 @@ bool Courier::operator==(const Courier &rhs) const {
 }
 
 Courier::Courier() {}
+
+ostream &operator<<(ostream &os, const Courier &courier) {
+    os << "volMax: " << courier.getMaxVolume() << " pesoMax: " << courier.getMaxWeight() << " custo: " << courier.getCost();
+    return os;
+}

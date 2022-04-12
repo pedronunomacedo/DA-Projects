@@ -50,7 +50,7 @@ bool Data::readCouriers(string filename) {
         Courier c(maxVolume, maxWeight, cost);
         couriers.push_back(c);
     }
-
+    file.close();
     return true;
 }
 
