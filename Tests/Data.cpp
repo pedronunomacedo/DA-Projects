@@ -4,6 +4,8 @@
 
 #include <sstream>
 #include "Data.h"
+#include <string>
+
 
 Data::Data() {
 
@@ -18,15 +20,15 @@ bool Data::readProducts(string filename) {
         return false;
     }
 
-    getline(file, line);
-    while (getline(file, line)) {
+    getline(file, line, ' ');
+    while (getline(file, line, ' ')) {
         double weight, volume; int reward, duration;
         istringstream iss(line);
         iss >> volume >> weight >> reward >> duration;
-        Product p(weight, volume, reward, duration);
+        Product p(volume, weight, reward, duration);
         products.push_back(p);
     }
-
+    file.close();
     return true;
 }
 

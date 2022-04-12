@@ -53,3 +53,5 @@ bool Courier::operator<(const Courier &rhs) const {
 bool Courier::operator==(const Courier &rhs) const {
     return maxWeight < rhs.maxWeight;
 }
+
+Courier::Courier() {}

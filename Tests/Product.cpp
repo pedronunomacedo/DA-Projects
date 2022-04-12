@@ -1,7 +1,7 @@
 #include "Product.h"
 #include <string>
 
-Product::Product(double weight, double volume, int reward, int duration) : weight(weight), volume(volume),
+Product::Product(double volume, double weight, int reward, int duration) : volume(volume),weight(weight)
                                                                            reward(reward), duration(duration) {}
 
 double Product::getWeight() const {
