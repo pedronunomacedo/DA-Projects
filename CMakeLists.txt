@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 project(project1_DA)
-
 set(CMAKE_CXX_STANDARD 14)
-
-add_executable(untitled main.cpp Tests/Data.cpp Tests/Data.h Tests/Algorithms.cpp Tests/Algorithms.h)
+include_directories(include)
+file(GLOB SRC "src/*.cpp")
+add_executable(main src/main.cpp ${SRC} )

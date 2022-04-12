@@ -2,8 +2,8 @@
 // Created by Utilizador on 05/04/2022.
 //
 
-#ifndef UNTITLED_COURIER_H
-#define UNTITLED_COURIER_H
+#pragma once
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -37,5 +37,3 @@ public:
     bool operator==(const Courier &rhs) const;
 };
 
-
-#endif //UNTITLED_COURIER_H

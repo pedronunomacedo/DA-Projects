@@ -2,8 +2,7 @@
 // Created by gonzallito on 11/04/22.
 //
 
-#ifndef UNTITLED_ALGORITHMS_H
-#define UNTITLED_ALGORITHMS_H
+#pragma once
 
 #include <iostream>
 #include "Courier.h"
@@ -21,5 +20,3 @@ public:
     int getMinCouriers();
 };
 
-
-#endif //UNTITLED_ALGORITHMS_H

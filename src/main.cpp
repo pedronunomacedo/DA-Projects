@@ -1,7 +1,7 @@
 #include <iostream>
-#include "Tests/Courier.h"
-#include "Tests/Product.h"
-#include "Tests/Algorithms.h"
+#include "Courier.h"
+#include "Product.h"
+#include "Algorithms.h"
 using namespace std;
 
 int main(){

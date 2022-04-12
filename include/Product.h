@@ -2,8 +2,7 @@
 // Created by Utilizador on 05/04/2022.
 //
 
-#ifndef UNTITLED_PRODUCTS_H
-#define UNTITLED_PRODUCTS_H
+#pragma once
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -41,7 +40,3 @@ public:
     bool operator==(const Product &rhs) const;
 };
 
-
-
-
-#endif //UNTITLED_PRODUCTS_H
