@@ -10,12 +10,14 @@ using namespace std;
 
 class Product {
 private:
-    int weight;
-    int volume;
+    double weight;
+    double volume;
     int reward;
     int duration;
 public:
-    Product(int weight, int volume, int reward, int duration);
+    Product();
+
+    Product(double volume, double weight, int reward, int duration);
 
     double getWeight() const;
 

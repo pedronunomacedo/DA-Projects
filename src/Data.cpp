@@ -20,9 +20,9 @@ bool Data::readProducts(string filename) {
         return false;
     }
 
-    getline(file, line, ' ');
-    while (getline(file, line, ' ')) {
-        double weight, volume; int reward, duration;
+    getline(file, line);
+    while (getline(file, line)) {
+        double volume, weight; int reward, duration;
         istringstream iss(line);
         iss >> volume >> weight >> reward >> duration;
         Product p(volume, weight, reward, duration);

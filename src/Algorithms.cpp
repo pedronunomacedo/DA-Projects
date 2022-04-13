@@ -15,15 +15,16 @@ int Algorithms::getMinCouriers() {
     sort(couriers.rbegin(), couriers.rend());
 
     // Create an array to store remaining space in bins. There can be at most n bins
-    int bin_rem[couriers.size()];
+    int bin_rem[products.size()][2];
 
     // Place items one by one
-    for (int i = 0; i < couriers.size(); i++) {
+    for (int i = 0; i < products.size(); i++) {
         // Find the first bin that can accommodate weight[i]
         int j;
         for (j = 0; j < res; j++) {
-            if (bin_rem[j] >= products[i].getVolume()) {
-                bin_rem[j] = bin_rem[j] - products[i].getVolume();
+            if (bin_rem[j][0] >= products[i].getVolume() && bin_rem[j][1] >= products[i].getWeight()) {
+                bin_rem[j][0] = bin_rem[j][0] - products[i].getVolume();
+                bin_rem[j][1] = bin_rem[j][1] - products[i].getWeight();
 
                 break;
             }
@@ -31,7 +32,8 @@ int Algorithms::getMinCouriers() {
 
         // If no bin could accommodate weight[i]
         if (j == res) {
-            bin_rem[res] = couriers[i].getMaxVolume() - products[i].getVolume();
+            bin_rem[res][0] = couriers[res].getMaxVolume() - products[i].getVolume();
+            bin_rem[res][1] = couriers[res].getMaxWeight() - products[i].getWeight();
             res++;
         }
 
