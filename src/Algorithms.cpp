@@ -41,3 +41,34 @@ int Algorithms::getMinCouriers() {
     return res;
 }
 
+double Algorithms::getMinTime() {
+    int res = 0;
+    vector<double> times;
+
+    vector<Product>productsTemp;
+    for (Product product : products) productsTemp.push_back(product);
+    products.clear();
+    
+    while (!productsTemp.empty() && res < 28800) {
+        vector<Product>::const_iterator itElim = productsTemp.begin();
+        double minVolume = productsTemp[0].getVolume();
+        for (vector<Product>::const_iterator it = productsTemp.begin(); it != productsTemp.end(); it++) {
+            if (it->getVolume() < minVolume) {
+                itElim = it;
+            }
+        }
+        res += itElim->getDuration();
+        times.push_back(res);
+        //cout << " -> " << itElim->getId() << "  |  " << itElim->getVolume() << "  |  " << itElim->getWeight() << "  |  " << itElim->getReward() << "  |  " << itElim->getDuration() << endl;
+        productsTemp.erase(itElim);
+    }
+
+    float result = 0;
+    for (double num : times) {
+        result += num;
+    }
+
+    //cout << endl << endl << endl << endl; cout << "  times.size() = " << times.size() << "  |  " << "result = " << result << endl;
+    return (ceil(result/times.size()));
+}
+

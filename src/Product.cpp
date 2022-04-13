@@ -1,8 +1,14 @@
 #include "Product.h"
 #include <string>
 
-Product::Product(double volume, double weight, int reward, int duration) : volume(volume),weight(weight),
+Product::Product() {}
+
+Product::Product(int id, double volume, double weight, int reward, int duration) : id(id),volume(volume),weight(weight),
 reward(reward), duration(duration) {}
+
+int Product::getId() const {
+    return id;
+}
 
 double Product::getWeight() const {
     return weight;
@@ -18,6 +24,10 @@ int Product::getReward() const {
 
 int Product::getDuration() const {
     return duration;
+}
+
+void Product::setId(int id) {
+    Product::id = id;
 }
 
 void Product::setWeight(double weight) {
@@ -53,5 +63,3 @@ bool Product::operator<(const Product &rhs) const {
 bool Product::operator==(const Product &rhs) const {
     return weight < rhs.weight;
 }
-
-Product::Product() {}

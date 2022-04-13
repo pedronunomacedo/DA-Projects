@@ -5,6 +5,7 @@
 #pragma once
 
 #include <iostream>
+#include <cmath>
 #include "Courier.h"
 #include "Data.h"
 #include "Product.h"
@@ -18,5 +19,6 @@ private:
 public:
     Algorithms(const vector<Product> &products, const vector<Courier> &couriers);
     int getMinCouriers();
+    double getMinTime();
 };
 

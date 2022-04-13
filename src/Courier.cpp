@@ -1,9 +1,10 @@
 #include "Product.h"
 #include "Courier.h"
 
-Courier::Courier(int maxVolume, int maxWeight, int cost) {
+Courier::Courier(int id, int maxVolume, int maxWeight, int cost) {
     //this->name = name;
     //this->plate = plate;
+    this->id = id;
     this->maxVolume = maxVolume;
     this->maxWeight = maxWeight;
     this->cost = cost;
@@ -24,6 +25,10 @@ bool Courier::removeProduct(Product &product) {
     products.erase(it); // If it exists, remove it
 
     return true;
+}
+
+int Courier::getId() const {
+    return id;
 }
 
 int Courier::getMaxVolume() const {
@@ -62,3 +67,4 @@ ostream &operator<<(ostream &os, const Courier &courier) {
     os << "volMax: " << courier.getMaxVolume() << " pesoMax: " << courier.getMaxWeight() << " custo: " << courier.getCost();
     return os;
 }
+

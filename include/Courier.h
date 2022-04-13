@@ -15,6 +15,7 @@ using namespace std;
 
 class Courier {
 private:
+    int id;
     string name;
     string plate;
     int maxVolume;
@@ -24,10 +25,12 @@ private:
 
 public:
     Courier();
-    Courier(int maxVolume, int maxWeight, int cost);
+    Courier(int id, int maxVolume, int maxWeight, int cost);
     vector<Product> getProducts() const;
     void addProducts(Product &product);
     bool removeProduct(Product &product);
+
+    int getId() const;
     int getMaxVolume() const;
     int getMaxWeight() const;
     string getName() const;
