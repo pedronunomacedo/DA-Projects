@@ -48,7 +48,7 @@ double Algorithms::getMinTime() {
     vector<Product>productsTemp;
     for (Product product : products) productsTemp.push_back(product);
     products.clear();
-    
+
     while (!productsTemp.empty() && res < 28800) {
         vector<Product>::const_iterator itElim = productsTemp.begin();
         double minVolume = productsTemp[0].getVolume();
