@@ -23,4 +23,17 @@ public:
     bool pass();
     void mainMenu() const;
     void runMain();
+    void scenariosMenu() const;
+    void productsMenu() const;
+    void couriersMenu() const;
+    void runScenarios();
+    void runProducts();
+    void runCouriers();
+    void addP();
+    Product seeP();
+    void delP();
+    void addC();
+    void seeC();
+    void delC();
+
 };

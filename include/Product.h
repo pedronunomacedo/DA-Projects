@@ -10,7 +10,6 @@ using namespace std;
 
 class Product {
 private:
-    int id;
     double weight;
     double volume;
     int reward;
@@ -18,9 +17,7 @@ private:
 public:
     Product();
 
-    Product(int id, double volume, double weight, int reward, int duration);
-
-    int getId() const;
+    Product(double volume, double weight, int reward, int duration);
 
     double getWeight() const;
 
@@ -29,8 +26,6 @@ public:
     int getReward() const;
 
     int getDuration() const;
-
-    void setId(int id);
 
     void setWeight(double weight);
 

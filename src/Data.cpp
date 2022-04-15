@@ -27,7 +27,7 @@ bool Data::readProducts(string filename) {
         double volume, weight; int reward, duration;
         istringstream iss(line);
         iss >> volume >> weight >> reward >> duration;
-        Product p(id, volume, weight, reward, duration);
+        Product p(volume, weight, reward, duration);
         products.push_back(p);
     }
     file.close();
@@ -51,7 +51,7 @@ bool Data::readCouriers(string filename) {
         int maxVolume, maxWeight, cost;
         istringstream iss(line);
         iss >> maxVolume >> maxWeight >> cost;
-        Courier c(id, maxVolume, maxWeight, cost);
+        Courier c(maxVolume, maxWeight, cost);
         couriers.push_back(c);
     }
     file.close();
