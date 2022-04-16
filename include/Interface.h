@@ -6,7 +6,9 @@
 
 #include <iostream>
 #include <fstream>
-#include "Algorithms.h"
+#include "Scenario1.h"
+#include "Scenario3.h"
+#include "Scenario3.h"
 #include "Courier.h"
 #include "Product.h"
 #include "Data.h"

@@ -100,15 +100,12 @@ void Interface::runScenarios() {
         if (pass()) {
             switch (option) {
                 case 1:
-                    cout << "oi";
+                    cout << "Min Couriers: " << &Scenario1::getMinCouriers;
                     break;
                 case 2:
                     cout << "oi";
                     break;
                 case 3:
-                    cout << "oi";
-                    break;
-                case 4:
                     cout << "oi";
                     break;
                 case 0:

@@ -1,5 +1,5 @@
 //
-// Created by gonzallito on 11/04/22.
+// Created by gonzallito on 16-04-2022.
 //
 
 #pragma once
@@ -9,16 +9,15 @@
 #include "Courier.h"
 #include "Data.h"
 #include "Product.h"
+#include <numeric>
 
 using namespace std;
 
-class Algorithms {
+class Scenario3 {
 private:
     vector<Product> products;
     vector<Courier> couriers;
 public:
-    Algorithms(const vector<Product> &products, const vector<Courier> &couriers);
-    int getMinCouriers();
+    Scenario3(const vector<Product> &products, const vector<Courier> &couriers);
     double getMinTime();
 };
-
