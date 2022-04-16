@@ -18,7 +18,8 @@ class Scenario2 {
 private:
     vector<Product> products;
     vector<Courier> couriers;
+    Scenario1 a;
 public:
-    Scenario2(const vector<Product> &products, const vector<Courier> &couriers);
+    Scenario2(const vector<Product> &products, const vector<Courier> &couriers, Scenario1 a);
     int getMaxProfit();
 };
