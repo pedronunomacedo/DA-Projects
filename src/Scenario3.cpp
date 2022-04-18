@@ -4,6 +4,10 @@
 
 #include "Scenario3.h"
 
+Scenario3::Scenario3() {
+
+}
+
 Scenario3::Scenario3(const vector<Product> &products, const vector<Courier> &couriers) : products(products),
                                                                                          couriers(couriers) {}
 
@@ -15,7 +19,7 @@ bool durationLess(Product const &p1, Product const &p2){
     return p1.getDuration() < p2.getDuration();
 }
 
-double Scenario3::getMinTime() {
+double Scenario3::getMidTime() {
     int res = 0;
     vector<double> times;
 

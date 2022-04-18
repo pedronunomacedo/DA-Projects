@@ -17,6 +17,7 @@ private:
     vector<Product> products;
     vector<Courier> couriers;
 public:
-    Scenario1(const vector<Product> &products, const vector<Courier> &couriers);
+    Scenario1();
+    Scenario1(vector<Product> &products, vector<Courier> &couriers);
     int getMinCouriers();
 };

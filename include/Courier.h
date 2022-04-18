@@ -15,8 +15,6 @@ using namespace std;
 
 class Courier {
 private:
-    string name;
-    string plate;
     int maxVolume;
     int maxWeight;
     int cost;
@@ -31,9 +29,7 @@ public:
 
     int getMaxVolume() const;
     int getMaxWeight() const;
-    string getName() const;
     int getCost() const;
-    string getPlate() const;
     friend ostream &operator<<(ostream &os, const Courier &courier);
     bool operator<(const Courier &rhs) const;
     bool operator==(const Courier &rhs) const;

@@ -20,6 +20,7 @@ private:
     vector<Courier> couriers;
     Scenario1 a;
 public:
+    Scenario2();
     Scenario2(const vector<Product> &products, const vector<Courier> &couriers, Scenario1 a);
     int getMaxProfit();
 };

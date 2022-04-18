@@ -31,6 +31,7 @@ bool Interface::pass() {
     }
 }
 void Interface::runMain() {
+    readFiles();
     while (true) {
         mainMenu();
         cout << " >";
@@ -72,7 +73,7 @@ void Interface::productsMenu() const {
     cout << endl;
     cout << " Choose one option: " << endl;
     cout << " [1] Add Product" << endl;
-    cout << " [2] See Product" << endl;
+    cout << " [2] Find Product" << endl;
     cout << " [3] Delete Product" << endl;
     cout << " [0] Back " << endl;
     cout << endl;
@@ -100,13 +101,13 @@ void Interface::runScenarios() {
         if (pass()) {
             switch (option) {
                 case 1:
-                    cout << "Min Couriers: " << &Scenario1::getMinCouriers;
+                    cout << " Min Couriers: " << scenario1.getMinCouriers() << endl;
                     break;
                 case 2:
-                    cout << "oi";
+                    cout << " Max profit: " << scenario2.getMaxProfit() << endl;
                     break;
                 case 3:
-                    cout << "oi";
+                    cout << " Mid Time: " << scenario3.getMidTime() << endl;
                     break;
                 case 0:
                     running = false;
@@ -181,15 +182,37 @@ void Interface::runCouriers() {
 void Interface::addP() {
     cout << endl;
     cout << " [Add Product]" << endl;
-    Product r = seeP();
-    for(auto &x: products){
-            if(r == x){
-                cout << endl << " Product already exists!" << endl;
-                return;
-            }
-    }
-    products.push_back(r);
-    cout << "But now we added it successfully! " << endl;
+
+    cout << endl;
+    double weight, volume;
+    int reward, duration;
+
+     do {
+        cout << " Volume:";
+        cin >> volume;
+
+        do {
+            cout << " Weight:";
+            cin >> weight;
+
+            do {
+                cout << " Reward:";
+                cin >> reward;
+
+                do {
+                    cout << " Duration (seconds):";
+                    cin >> duration;
+                    cout << endl;
+                } while (!pass());
+            } while (!pass());
+        } while (!pass());
+    } while (!pass());
+    Product p1(volume, weight, reward, duration);
+    products.push_back(p1);
+    scenario1 = Scenario1(products, couriers);
+    scenario2 = Scenario2(products, couriers, scenario1);
+    scenario3 = Scenario3(products, couriers);
+    cout << "We added it successfully! " << endl;
 }
 
 Product Interface::seeP() {
@@ -219,7 +242,7 @@ Product Interface::seeP() {
                     for (const auto &x: products) {
                         if ((x.getWeight() == weight) && (x.getVolume() == volume) && (x.getReward() == reward) &&
                             (x.getDuration() == duration)) {
-                            cout << "The product was found!";
+                            cout << "The product was found!" << endl;
                             return x;
                         }
                     }
@@ -227,7 +250,7 @@ Product Interface::seeP() {
             }
         }
     }
-    cout << "The product was not found! ";
+    cout << "The product was not found! " << endl;
     Product p1(volume, weight, reward, duration);
     cout << endl;
     return p1;
@@ -255,23 +278,23 @@ void Interface::addC() {
     int maxWeight, cost,maxVolume;
 
             if (pass()) {
-                cout << " maxWeight:";
-                cin >> maxWeight;
+                cout << " maxVolume:";
+                cin >> maxVolume;
 
                 if (pass()) {
-                    cout << " cost:";
-                    cin >> cost;
+                    cout << " maxWeight:";
+                    cin >> maxWeight;
 
                 }
                     if(pass()){
-                        cout << " maxVolume:";
-                        cin >> maxVolume;
+                        cout << " cost:";
+                        cin >> cost;
                         cout << endl;
                     }
 
                         if (pass()) {
                             for (const auto &x: couriers) {
-                                if ((x.getName() == name) && (x.getPlate() == plate) && (x.getCost() == cost) &&
+                                if ((x.getCost() == cost) &&
                             (x.getMaxWeight() == maxWeight && (x.getMaxVolume() == maxWeight))) {
                                     cout << "The courier was found!";
                                     return;
@@ -282,6 +305,9 @@ void Interface::addC() {
     Courier c(maxVolume,maxWeight,cost);
     cout << endl;
     couriers.push_back(c);
+    scenario1 = Scenario1(products, couriers);
+    scenario2 = Scenario2(products, couriers, scenario1);
+    scenario3 = Scenario3(products, couriers);
     cout << "The courier was added!" << endl;
 
 }
@@ -318,7 +344,7 @@ void Interface::delC() {
 
                 if (pass()) {
                     for (auto it = couriers.begin(); it != couriers.end(); it++) {
-                        if ((it->getName() == name) && (it->getPlate() == plate) && (it->getCost() == cost) &&
+                        if ((it->getCost() == cost) &&
                             (it->getMaxWeight() == maxWeight && (it->getMaxWeight() == maxWeight))) {
                             couriers.erase(it);
                             cout << endl << " The courier was deleted!" << endl;
@@ -328,5 +354,31 @@ void Interface::delC() {
                 }
             }
         }
+
+void Interface::updateFiles() {
+    ofstream myFile("../carrinhas.txt");
+
+    for (Courier c : couriers) {
+        myFile << c.getMaxVolume() << " " << c.getMaxWeight() << " " << c.getCost();
+    }
+    myFile.close();
+    myFile.open("../encomendas.txt");
+
+    for (Product p : products) {
+        myFile << p.getVolume() << " " << p.getWeight() << " " << p.getReward() << " " << p.getDuration();
+    }
+    myFile.close();
+}
+
+void Interface::readFiles() {
+    data.readCouriers("../carrinhas.txt");
+    data.readProducts("../encomendas.txt");
+    couriers = data.getTrucks();
+    products = data.getProducts();
+    scenario1 = Scenario1(products, couriers);
+    scenario2 = Scenario2(products, couriers, scenario1);
+    scenario3 = Scenario3(products, couriers);
+}
+
 
 

@@ -7,7 +7,7 @@
 #include <iostream>
 #include <fstream>
 #include "Scenario1.h"
-#include "Scenario3.h"
+#include "Scenario2.h"
 #include "Scenario3.h"
 #include "Courier.h"
 #include "Product.h"
@@ -20,6 +20,10 @@ class Interface {
 private:
     vector<Product> products;
     vector<Courier> couriers;
+    Data data;
+    Scenario1 scenario1;
+    Scenario2 scenario2;
+    Scenario3 scenario3;
 public:
     Interface();
     bool pass();
@@ -37,5 +41,6 @@ public:
     void addC();
     void seeC();
     void delC();
-
+    void updateFiles();
+    void readFiles();
 };

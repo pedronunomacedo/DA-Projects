@@ -4,6 +4,10 @@
 
 #include "Scenario2.h"
 
+Scenario2::Scenario2() {
+
+}
+
 Scenario2::Scenario2(const vector<Product> &products, const vector<Courier> &couriers, Scenario1 a) : products(products),
                                                                                                       couriers(couriers),
                                                                                                       a(a) {}

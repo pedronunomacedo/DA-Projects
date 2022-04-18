@@ -35,16 +35,8 @@ int Courier::getMaxWeight() const {
     return maxWeight;
 }
 
-string Courier::getName() const {
-    return name;
-}
-
 int Courier::getCost() const {
     return cost;
-}
-
-string Courier::getPlate() const {
-    return plate;
 }
 
 bool Courier::operator<(const Courier &rhs) const {

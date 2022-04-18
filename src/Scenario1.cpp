@@ -4,7 +4,11 @@
 
 #include "Scenario1.h"
 
-Scenario1::Scenario1(const vector<Product> &products, const vector<Courier> &couriers) : products(products),
+Scenario1::Scenario1() {
+
+}
+
+Scenario1::Scenario1(vector<Product> &products,vector<Courier> &couriers) : products(products),
                                                                                            couriers(couriers) {}
 
 int Scenario1::getMinCouriers() {

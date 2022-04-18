@@ -18,6 +18,7 @@ private:
     vector<Product> products;
     vector<Courier> couriers;
 public:
+    Scenario3();
     Scenario3(const vector<Product> &products, const vector<Courier> &couriers);
-    double getMinTime();
+    double getMidTime();
 };
