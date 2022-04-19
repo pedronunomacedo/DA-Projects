@@ -145,6 +145,9 @@ void Interface::runProducts() {
                 default:
                     cout << "\n Invalid input!\n";
             }
+            scenario1 = Scenario1(products, couriers);
+            scenario2 = Scenario2(products, couriers, scenario1);
+            scenario3 = Scenario3(products, couriers);
         }
     }
 }
@@ -175,6 +178,9 @@ void Interface::runCouriers() {
                 default:
                     cout << "\n Invalid input!\n";
             }
+            scenario1 = Scenario1(products, couriers);
+            scenario2 = Scenario2(products, couriers, scenario1);
+            scenario3 = Scenario3(products, couriers);
         }
     }
 }
@@ -210,9 +216,6 @@ void Interface::addP() {
     Product p1(volume, weight, reward, duration);
     products.push_back(p1);
     updateFiles();
-    scenario1 = Scenario1(products, couriers);
-    scenario2 = Scenario2(products, couriers, scenario1);
-    scenario3 = Scenario3(products, couriers);
     cout << "We added it successfully! " << endl;
 }
 
@@ -255,9 +258,6 @@ Product Interface::seeP() {
     Product p1(volume, weight, reward, duration);
     cout << endl;
     return p1;
-
-
-
 }
 
 void Interface::delP() {
@@ -271,11 +271,13 @@ void Interface::delP() {
             return;
         }
     }
+    scenario1 = Scenario1(products, couriers);
+    scenario2 = Scenario2(products, couriers, scenario1);
+    scenario3 = Scenario3(products, couriers);
 }
 
 void Interface::addC() {
     cout << endl;
-    string name, plate;
     int maxWeight, cost,maxVolume;
 
             if (pass()) {
@@ -314,19 +316,17 @@ void Interface::seeC() {
 
 void Interface::delC() {
     cout << endl;
-    cout << " [Delete Courier]" << endl;
-    cout << endl;
-    string name, plate;
+    cout << " [Delete Courier]" << endl << endl;
     int maxWeight, cost, maxVolume;
-    bool found = true;
+    bool found = false;
 
     if (pass()) {
-        cout << " maxWeight:";
-        cin >> maxWeight;
+        cout << " maxVolume:";
+        cin >> maxVolume;
 
         if (pass()) {
-            cout << " maxVolume:";
-            cin >> maxVolume;
+            cout << " maxWeight:";
+            cin >> maxWeight;
 
             if (pass()) {
                 cout << " cost:";
@@ -338,11 +338,11 @@ void Interface::delC() {
                             couriers.erase(it);
                             updateFiles();
                             cout << endl << " The courier was deleted!" << endl;
-                            found = false;
+                            found = true;
                             return;
                         }
                     }
-                    cout << endl << " The Courier doesn't exist." << endl;
+                    if (!found) cout << endl << " The Courier doesn't exist." << endl;
                 }
             }
         }
