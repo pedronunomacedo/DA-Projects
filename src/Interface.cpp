@@ -209,6 +209,7 @@ void Interface::addP() {
     } while (!pass());
     Product p1(volume, weight, reward, duration);
     products.push_back(p1);
+    updateFiles();
     scenario1 = Scenario1(products, couriers);
     scenario2 = Scenario2(products, couriers, scenario1);
     scenario3 = Scenario3(products, couriers);
@@ -285,26 +286,17 @@ void Interface::addC() {
                     cout << " maxWeight:";
                     cin >> maxWeight;
 
-                }
-                    if(pass()){
+                    if (pass()) {
                         cout << " cost:";
                         cin >> cost;
                         cout << endl;
-                    }
-
-                        if (pass()) {
-                            for (const auto &x: couriers) {
-                                if ((x.getCost() == cost) &&
-                            (x.getMaxWeight() == maxWeight && (x.getMaxVolume() == maxWeight))) {
-                                    cout << "The courier was found!";
-                                    return;
-                        }
                     }
                 }
             }
     Courier c(maxVolume,maxWeight,cost);
     cout << endl;
     couriers.push_back(c);
+    updateFiles();
     scenario1 = Scenario1(products, couriers);
     scenario2 = Scenario2(products, couriers, scenario1);
     scenario3 = Scenario3(products, couriers);
@@ -325,47 +317,49 @@ void Interface::delC() {
     cout << " [Delete Courier]" << endl;
     cout << endl;
     string name, plate;
-    int maxWeight, cost,maxVolume;
+    int maxWeight, cost, maxVolume;
+    bool found = true;
+
+    if (pass()) {
+        cout << " maxWeight:";
+        cin >> maxWeight;
+
+        if (pass()) {
+            cout << " maxVolume:";
+            cin >> maxVolume;
 
             if (pass()) {
-                cout << " maxWeight:";
-                cin >> maxWeight;
-
-                if (pass()) {
-                    cout << " cost:";
-                    cin >> cost;
-
-                }
-                if(pass()){
-                    cout << " maxVolume:";
-                    cin >> maxVolume;
-
-                }
+                cout << " cost:";
+                cin >> cost;
 
                 if (pass()) {
                     for (auto it = couriers.begin(); it != couriers.end(); it++) {
-                        if ((it->getCost() == cost) &&
-                            (it->getMaxWeight() == maxWeight && (it->getMaxWeight() == maxWeight))) {
+                        if ((it->getCost() == cost) && (it->getMaxWeight() == maxWeight) && (it->getMaxVolume() == maxVolume)) {
                             couriers.erase(it);
+                            updateFiles();
                             cout << endl << " The courier was deleted!" << endl;
+                            found = false;
                             return;
                         }
                     }
+                    cout << endl << " The Courier doesn't exist." << endl;
                 }
             }
         }
+    }
+}
 
 void Interface::updateFiles() {
     ofstream myFile("../carrinhas.txt");
 
     for (Courier c : couriers) {
-        myFile << c.getMaxVolume() << " " << c.getMaxWeight() << " " << c.getCost();
+        myFile << c.getMaxVolume() << " " << c.getMaxWeight() << " " << c.getCost() << endl;
     }
     myFile.close();
     myFile.open("../encomendas.txt");
 
     for (Product p : products) {
-        myFile << p.getVolume() << " " << p.getWeight() << " " << p.getReward() << " " << p.getDuration();
+        myFile << p.getVolume() << " " << p.getWeight() << " " << p.getReward() << " " << p.getDuration() << endl;
     }
     myFile.close();
 }

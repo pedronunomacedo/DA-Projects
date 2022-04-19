@@ -6,6 +6,8 @@
 #include "Data.h"
 #include <string>
 
+using namespace std;
+
 
 Data::Data() {
 
@@ -44,9 +46,8 @@ bool Data::readCouriers(string filename) {
         return false;
     }
 
-    getline(file, line);
+    //getline(file, line);
     while (getline(file, line)) {
-        //string name, plate;
         id++;
         int maxVolume, maxWeight, cost;
         istringstream iss(line);
