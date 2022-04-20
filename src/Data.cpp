@@ -23,7 +23,7 @@ bool Data::readProducts(string filename) {
         return false;
     }
 
-    getline(file, line);
+    //getline(file, line);
     while (getline(file, line)) {
         id++;
         double volume, weight; int reward, duration;

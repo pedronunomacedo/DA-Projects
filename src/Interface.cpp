@@ -245,8 +245,7 @@ Product Interface::seeP() {
 
                 if (pass()) {
                     for (const auto &x: products) {
-                        if ((x.getWeight() == weight) && (x.getVolume() == volume) && (x.getReward() == reward) &&
-                            (x.getDuration() == duration)) {
+                        if ((x.getWeight() == weight) && (x.getVolume() == volume) && (x.getReward() == reward) && (x.getDuration() == duration)) {
                             cout << "The product was found!" << endl;
                             return x;
                         }
@@ -268,13 +267,11 @@ void Interface::delP() {
     for (auto it = products.begin(); it != products.end(); it++) {
         if (r.getWeight() == (it)->getWeight() && r.getVolume() == it->getVolume() && r.getReward() == it->getReward() && r.getDuration() == it->getDuration()) {
             products.erase(it);
+            updateFiles();
             cout << endl << " And deleted!" << endl;
             return;
         }
     }
-    scenario1 = Scenario1(products, couriers);
-    scenario2 = Scenario2(products, couriers, scenario1);
-    scenario3 = Scenario3(products, couriers);
 }
 
 void Interface::addC() {
