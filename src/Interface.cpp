@@ -33,6 +33,9 @@ bool Interface::pass() {
 void Interface::runMain() {
     readFiles();
     while (true) {
+        scenario1 = Scenario1(products, couriers);
+        scenario2 = Scenario2(products, couriers, scenario1);
+        scenario3 = Scenario3(products, couriers);
         mainMenu();
         cout << " >";
 
@@ -92,6 +95,9 @@ void Interface::couriersMenu() const{
 void Interface::runScenarios() {
     bool running = true;
     while (running) {
+        scenario1 = Scenario1(products, couriers);
+        scenario2 = Scenario2(products, couriers, scenario1);
+        scenario3 = Scenario3(products, couriers);
         scenariosMenu();
         cout << " >";
 
@@ -122,6 +128,9 @@ void Interface::runScenarios() {
 void Interface::runProducts() {
     bool running = true;
     while (running) {
+        scenario1 = Scenario1(products, couriers);
+        scenario2 = Scenario2(products, couriers, scenario1);
+        scenario3 = Scenario3(products, couriers);
         productsMenu();
         cout << " >";
 
@@ -155,6 +164,9 @@ void Interface::runProducts() {
 void Interface::runCouriers() {
     bool running = true;
     while (running) {
+        scenario1 = Scenario1(products, couriers);
+        scenario2 = Scenario2(products, couriers, scenario1);
+        scenario3 = Scenario3(products, couriers);
         couriersMenu();
         cout << " >";
 
@@ -217,6 +229,9 @@ void Interface::addP() {
     products.push_back(p1);
     updateFiles();
     cout << "We added it successfully! " << endl;
+    scenario1 = Scenario1(products, couriers);
+    scenario2 = Scenario2(products, couriers, scenario1);
+    scenario3 = Scenario3(products, couriers);
 }
 
 Product Interface::seeP() {
@@ -344,6 +359,9 @@ void Interface::delC() {
                         }
                     }
                     if (!found) cout << endl << " The Courier doesn't exist." << endl;
+                    scenario1 = Scenario1(products, couriers);
+                    scenario2 = Scenario2(products, couriers, scenario1);
+                    scenario3 = Scenario3(products, couriers);
                 }
             }
         }
