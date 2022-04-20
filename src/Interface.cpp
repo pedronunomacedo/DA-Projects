@@ -1,5 +1,6 @@
 #include "Interface.h"
 #include <climits>
+
 Interface::Interface() {
     couriers.clear();
     products.clear();
@@ -318,7 +319,6 @@ void Interface::delC() {
     cout << endl;
     cout << " [Delete Courier]" << endl << endl;
     int maxWeight, cost, maxVolume;
-    bool found = false;
 
     if (pass()) {
         cout << " maxVolume:";
@@ -338,11 +338,10 @@ void Interface::delC() {
                             couriers.erase(it);
                             updateFiles();
                             cout << endl << " The courier was deleted!" << endl;
-                            found = true;
                             return;
                         }
                     }
-                    if (!found) cout << endl << " The Courier doesn't exist." << endl;
+                    cout << endl << " The Courier doesn't exist." << endl;
                 }
             }
         }
