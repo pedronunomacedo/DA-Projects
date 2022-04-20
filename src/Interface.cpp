@@ -267,6 +267,7 @@ void Interface::delP() {
     for (auto it = products.begin(); it != products.end(); it++) {
         if (r.getWeight() == (it)->getWeight() && r.getVolume() == it->getVolume() && r.getReward() == it->getReward() && r.getDuration() == it->getDuration()) {
             products.erase(it);
+            updateFiles();
             cout << endl << " And deleted!" << endl;
             return;
         }
