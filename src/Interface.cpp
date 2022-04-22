@@ -6,6 +6,9 @@ Interface::Interface() {
     products.clear();
 }
 
+/**
+ * Run the main menu and asks the user for an option
+ */
 void Interface::mainMenu() const {
     cout << endl;
     cout << " ===============================" << endl;
@@ -22,6 +25,10 @@ void Interface::mainMenu() const {
     cout << endl;
 }
 
+/**
+ * Function to check if the user input is a valid input or not
+ * @return true if it's a valid input and false, otherwise
+ */
 bool Interface::pass() {
     if (cin.good()) return true;
     else {
@@ -31,6 +38,10 @@ bool Interface::pass() {
         return false;
     }
 }
+
+/**
+ * Run the main menu and goes to the function that the user choose
+ */
 void Interface::runMain() {
     readFiles();
     while (true) {
@@ -60,6 +71,10 @@ void Interface::runMain() {
     }
 }
 
+/**
+ * Asks for the user what scenario he wants to see from 3 different scenarios
+ */
+
 void Interface::scenariosMenu() const {
     cout << endl;
     cout << " Choose one of the following Optimization Scenarios: " << endl;
@@ -70,6 +85,9 @@ void Interface::scenariosMenu() const {
     cout << endl;
 }
 
+/**
+ * Shows the products menu
+ */
 void Interface::productsMenu() const {
     cout << endl;
     cout << " Choose one option: " << endl;
@@ -80,6 +98,9 @@ void Interface::productsMenu() const {
     cout << endl;
 }
 
+/**
+ * Shows the couriers menu
+ */
 void Interface::couriersMenu() const{
     cout << endl;
     cout << " Choose one option: " << endl;
@@ -90,6 +111,9 @@ void Interface::couriersMenu() const{
     cout << endl;
 }
 
+/**
+ * Depending on what scenario the user choose, he show the result of the chosen scenario.
+ */
 void Interface::runScenarios() {
     bool running = true;
     while (running) {
@@ -120,6 +144,9 @@ void Interface::runScenarios() {
     }
 }
 
+/**
+ * Shows the product menu.
+ */
 void Interface::runProducts() {
     bool running = true;
     while (running) {
@@ -153,6 +180,9 @@ void Interface::runProducts() {
     }
 }
 
+/**
+ * Shows the couriers menu
+ */
 void Interface::runCouriers() {
     bool running = true;
     while (running) {
@@ -186,6 +216,9 @@ void Interface::runCouriers() {
     }
 }
 
+/**
+ * In this option of the courier menu, we can add a courier to the list of couriers
+ */
 void Interface::addP() {
     cout << endl;
     cout << " [Add Product]" << endl;
@@ -220,6 +253,10 @@ void Interface::addP() {
     cout << "We added it successfully! " << endl;
 }
 
+/**
+ * In this option of the courier menu, we can check if a product exists or not. Always return an object of Product (class).
+ * @return
+ */
 Product Interface::seeP() {
     cout << endl;
     double weight, volume;
@@ -260,6 +297,9 @@ Product Interface::seeP() {
     return p1;
 }
 
+/**
+ * In this option in the couriers menu, we can delete a courier by its parameters. Only deletes a courier, if the parameters inputed by the user correspond to some product in the products vector.
+ */
 void Interface::delP() {
     cout << endl;
     cout << " [Delete Product]" << endl;
@@ -274,6 +314,9 @@ void Interface::delP() {
     }
 }
 
+/**
+ * In this option in the courier menu, we can add a courier to the vector of couriers.
+ */
 void Interface::addC() {
     cout << endl;
     int maxWeight, cost,maxVolume;
@@ -304,6 +347,9 @@ void Interface::addC() {
 
 }
 
+/**
+ * In this option of the couriers menu, we can see all couriers.
+ */
 void Interface::seeC() {
     cout << endl;
     cout << " [See Couriers]" << endl << endl;
@@ -312,6 +358,9 @@ void Interface::seeC() {
         cout << x << endl;
 }
 
+/**
+ * In this option of the courier menu, we can delete a courier by giving its parameters.
+ */
 void Interface::delC() {
     cout << endl;
     cout << " [Delete Courier]" << endl << endl;
@@ -345,6 +394,9 @@ void Interface::delC() {
     }
 }
 
+/**
+ * Update the files in every change that we make while the program is running.
+ */
 void Interface::updateFiles() {
     ofstream myFile("../carrinhas.txt");
 
@@ -360,6 +412,9 @@ void Interface::updateFiles() {
     myFile.close();
 }
 
+/**
+ * When the program starts, we will need to read the files and save their content to use it later.
+ */
 void Interface::readFiles() {
     data.readCouriers("../carrinhas.txt");
     data.readProducts("../encomendas.txt");

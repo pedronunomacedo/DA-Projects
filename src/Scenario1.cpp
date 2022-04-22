@@ -11,6 +11,10 @@ Scenario1::Scenario1() {
 Scenario1::Scenario1(vector<Product> &products,vector<Courier> &couriers) : products(products),
                                                                                            couriers(couriers) {}
 
+/**
+* Counts the minimum number of couriers that the company needs to deliver all the products.
+* @return (number of total couriers)
+*/
 int Scenario1::getMinCouriers() {
     int res = 0;
 

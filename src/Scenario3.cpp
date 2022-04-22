@@ -11,6 +11,13 @@ Scenario3::Scenario3() {
 Scenario3::Scenario3(const vector<Product> &products, const vector<Courier> &couriers) : products(products),
                                                                                          couriers(couriers) {}
 
+/**
+* Compares two products.
+* @param p1 (first product in comparison)
+* @param p2 (second product in comparison)
+* @return True if the duration of the first project is less then the second product, or if the reward of the first project is less then the reward of the second project
+* (in the case that the duration is equal in both products).
+*/
 bool durationLess(Product const &p1, Product const &p2){
     if (p1.getDuration() == p2.getDuration()) {
         return (p1.getReward() <= p2.getReward());
@@ -19,6 +26,10 @@ bool durationLess(Product const &p1, Product const &p2){
     return p1.getDuration() < p2.getDuration();
 }
 
+/**
+ * Calculates the average time of the minor times possible.
+ * @return The min time.
+ */
 double Scenario3::getMidTime() {
     int res = 0;
     vector<double> times;
