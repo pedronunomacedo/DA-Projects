@@ -23,22 +23,6 @@ int Product::getDuration() const {
     return duration;
 }
 
-void Product::setWeight(double weight) {
-    Product::weight = weight;
-}
-
-void Product::setVolume(double volume) {
-    Product::volume = volume;
-}
-
-void Product::setReward(int reward) {
-    Product::reward = reward;
-}
-
-void Product::setDuration(int duration) {
-    Product::duration = duration;
-}
-
 ostream &operator<<(ostream &os, const Product &product) {
     os << "volume: " << product.getVolume() << " weight: " << product.getWeight() << " reward: " << product.getReward()
        << " duration: " << product.getDuration();
@@ -47,12 +31,9 @@ ostream &operator<<(ostream &os, const Product &product) {
 
 
 bool Product::operator<(const Product &rhs) const {
-    if (volume == rhs.volume){
-        return weight < rhs.weight;
-    }
-    return volume < rhs.volume;
+    return volume*weight < rhs.volume*rhs.weight;
 }
 
 bool Product::operator==(const Product &rhs) const {
-    return weight < rhs.weight;
+    return volume*weight < rhs.volume*rhs.weight;
 }

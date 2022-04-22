@@ -18,7 +18,7 @@ int Scenario1::getMinCouriers() {
 
     sort(couriers.rbegin(), couriers.rend());
 
-    // Create an array to store remaining space in bins. There can be at most n bins
+    // Create an array to store remaining space in bins. There can be at most products.size() bins
     int bin_rem[products.size()][2];
 
     // Place items one by one
@@ -34,7 +34,7 @@ int Scenario1::getMinCouriers() {
             }
         }
 
-        // If no bin could accommodate weight[i]
+        // If no bin could accommodate weight and volume
         if (j == res) {
             bin_rem[res][0] = couriers[res].getMaxVolume() - products[i].getVolume();
             bin_rem[res][1] = couriers[res].getMaxWeight() - products[i].getWeight();

@@ -17,8 +17,8 @@ int Scenario2::getMaxProfit() {
     for (unsigned int i = 0; i < a.getMinCouriers() - 1; i++) {
         totalCost += couriers[i].getCost();
     }
-    for (int i = 0; i < products.size(); ++i) {
-        totalReward += products[i].getReward();
+    for (auto & product : products) {
+        totalReward += product.getReward();
     }
     return -totalCost + totalReward;
 }

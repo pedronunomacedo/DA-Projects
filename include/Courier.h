@@ -23,10 +23,6 @@ private:
 public:
     Courier();
     Courier(int maxVolume, int maxWeight, int cost);
-    vector<Product> getProducts() const;
-    void addProducts(Product &product);
-    bool removeProduct(Product &product);
-
     int getMaxVolume() const;
     int getMaxWeight() const;
     int getCost() const;

@@ -2,29 +2,9 @@
 #include "Courier.h"
 
 Courier::Courier(int maxVolume, int maxWeight, int cost) {
-    //this->name = name;
-    //this->plate = plate;
-
     this->maxVolume = maxVolume;
     this->maxWeight = maxWeight;
     this->cost = cost;
-    //copy(this->products.begin(), this->products.end(), back_inserter(products));
-}
-
-vector<Product> Courier::getProducts() const {
-    return products;
-}
-
-void Courier::addProducts(Product &product) {
-    products.push_back(product);
-}
-
-bool Courier::removeProduct(Product &product) {
-    auto it = find(products.begin(), products.end(), product); // memory position of &product
-    if (it == products.end()) return false; // If &product doesn't exist in the products vector
-    products.erase(it); // If it exists, remove it
-
-    return true;
 }
 
 int Courier::getMaxVolume() const {
@@ -40,13 +20,11 @@ int Courier::getCost() const {
 }
 
 bool Courier::operator<(const Courier &rhs) const {
-    if (maxVolume == rhs.maxVolume)
-        return maxWeight < rhs.maxWeight;
-    return maxVolume < rhs.maxVolume;
+    return maxVolume*maxWeight < rhs.maxVolume*rhs.maxWeight;
 }
 
 bool Courier::operator==(const Courier &rhs) const {
-    return maxWeight < rhs.maxWeight;
+    return maxVolume*maxWeight < rhs.maxVolume*rhs.maxWeight;
 }
 
 Courier::Courier() {}
