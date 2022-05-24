@@ -1,7 +1,8 @@
 #include <iostream>
+#include "Classes/menu.h"
+#include "Classes/graph.h"
 using namespace std;
 int main() {
-    cout << "ola";
-    cout << "Hello, World!" << std::endl;
-    return 0;
+    menu menu;
+    menu.run();
 }
