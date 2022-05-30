@@ -15,21 +15,23 @@
 #include <queue>
 using namespace std;
 
+struct Bus {
+    int src;
+    int dest;
+    int capacity;
+    int duration;
+};
+
+struct Stop {
+    list<Bus> adj;
+    double dist;
+    int pred;
+    bool visited;
+};
+
+
 class Graph {
 private:
-    struct Bus {
-        int src;
-        int dest;
-        int capacity;
-        int duration;
-    };
-
-    struct Stop {
-        list<Bus> adj;
-        double dist;
-        int pred;
-        bool visited;
-    };
 
     int nr_stops;
     vector<Stop> stops;

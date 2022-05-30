@@ -8,11 +8,18 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include "graph.h"
+
+using namespace std;
 
 class Data {
+
+private:
+    vector<Bus> buses;
 public:
     Data();
     bool readProducts(string filename);
+    const vector<Bus> &getBuses();
 
 };
 

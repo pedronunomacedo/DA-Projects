@@ -1,29 +1,30 @@
 #include <iostream>
 #include "Classes/menu.h"
 #include "Classes/graph.h"
+#include "Classes/Data.h"
+#include "Classes/Scenario1.h"
 #include <vector>
 using namespace std;
 
 int main() {
 
-    // Graph representation
-    Graph graph1;
-    vector<vector<pair<int, int> > > graph;
+    Scenario1 scenario1;
+    vector<Bus> buses;
+    Data data;
+    data.readProducts("../files/Tests_B/in01_b.txt");
+    buses = data.getBuses();
 
-    graph.assign(graph1.getNodes().size() + 1, vector<pair<int, int> >());
+    vector<vector<tuple<int, int, int> > > graph;
 
-    // Adding edges to graph
+    int no_vertices = 50;
 
-    // Resulting graph
-    // 1--2
-    // |  |
-    // 4--3
-    // Note that order in pair is (distance, vertex)
-    graph1.addBus(1,2,4,6);
-    graph1.addBus(2,3,3,5);
-    graph1.addBus(3,4,3,7);
-    graph1.addBus(4,1,3,7);
+    graph.assign(no_vertices + 1, vector<tuple<int, int, int> >());
 
-    cout << graph1.widest_path_problem(1, 4);
+    for (auto & bus : buses) {
+        graph[bus.src].push_back(make_tuple(bus.capacity, bus.dest, bus.duration));
+    }
+
+    cout << scenario1.widest_path_problem(graph, 1, 50);
+
     return 0;
 }
