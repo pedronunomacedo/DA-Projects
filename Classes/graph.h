@@ -16,30 +16,32 @@
 using namespace std;
 
 class Graph {
-    struct Edge {
+private:
+    struct Bus {
+        int src;
         int dest;
-        string lineCode;
+        int capacity;
+        int duration;
     };
 
-    struct Node {
-        list<Edge> adj;
+    struct Stop {
+        list<Bus> adj;
         double dist;
         int pred;
         bool visited;
     };
 
-    int n;
-    bool hasDir;
-    vector<Node> nodes;
+    int nr_stops;
+    vector<Stop> stops;
 
     void bfs(int s);
 public:
     Graph();
-    explicit Graph(int nodes, bool dir = false);
-    int widest_path_problem(vector<vector<pair<int, int> > > &Graph, int src, int target);
-    void addEdge(const pair<int,string> &src, const pair<int,string> &dest, const string &lineCode);
-    void printpath(vector<int>& parent, int vertex, int target);
-    vector<Node> getNodes() { return nodes; };
+    explicit Graph(int stops, bool dir = false);
+    void addBus(int src, int dest, int capacity, int duration);
+    vector<Stop> getNodes() { return stops; };
+    int widest_path_problem(int src, int target);
+    void printpath(vector<int> &parent, int vertex, int target);
 };
 
 #endif //PROJECT2_DA_GRAPH_H
