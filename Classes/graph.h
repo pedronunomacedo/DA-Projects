@@ -35,15 +35,17 @@ private:
 
     int nr_stops;
     vector<Stop> stops;
+    int nr_buses;
 
-    void bfs(int s);
 public:
     Graph();
+    void setNrStops(int num_stops);
+    void setNrBuses(int num_buses);
+    int getNrStops() const;
+    int getNrBuses() const;
     explicit Graph(int stops, bool dir = false);
     void addBus(int src, int dest, int capacity, int duration);
     vector<Stop> getNodes() { return stops; };
-    int widest_path_problem(int src, int target);
-    void printpath(vector<int> &parent, int vertex, int target);
 };
 
 #endif //PROJECT2_DA_GRAPH_H

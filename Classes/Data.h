@@ -16,11 +16,11 @@ class Data {
 
 private:
     vector<Bus> buses;
+    Graph g;
 public:
     Data();
-    bool readProducts(string filename);
+    bool readData(Graph &g, string filename);
     const vector<Bus> &getBuses();
-
 };
 
 

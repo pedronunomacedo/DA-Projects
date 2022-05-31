@@ -11,12 +11,13 @@ int main() {
     Scenario1 scenario1;
     vector<Bus> buses;
     Data data;
-    data.readProducts("../files/Tests_B/in01_b.txt");
+    Graph g;
+    data.readData(g, "../files/Tests_B/in01_b.txt");
     buses = data.getBuses();
 
     vector<vector<tuple<int, int, int> > > graph;
 
-    int no_vertices = 50;
+    int no_vertices = g.getNrStops();
 
     graph.assign(no_vertices + 1, vector<tuple<int, int, int> >());
 

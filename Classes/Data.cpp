@@ -9,9 +9,13 @@ Data::Data() {
 
 }
 
-bool Data::readProducts(string filename) {
+const vector<Bus> &Data::getBuses() {
+    return buses;
+}
+
+bool Data::readData(Graph &g, string filename) {
     fstream file(filename);
-    string line;
+    string firstline, line;
     int id = 0;
 
     if (!file.is_open()) {
@@ -19,7 +23,13 @@ bool Data::readProducts(string filename) {
         return false;
     }
 
-    getline(file, line);
+    getline(file, firstline);
+    int nr_stops, nr_buses;
+    istringstream iss1(firstline);
+    iss1 >> nr_stops >> nr_buses;
+    g.setNrStops(nr_stops);
+    g.setNrBuses(nr_buses);
+
     while (getline(file, line)) {
         id++;
         int source, target, capacity, duration;
@@ -30,8 +40,4 @@ bool Data::readProducts(string filename) {
     }
     file.close();
     return true;
-}
-
-const vector<Bus> &Data::getBuses() {
-    return buses;
 }
