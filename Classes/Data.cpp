@@ -9,9 +9,7 @@ Data::Data() {
 
 }
 
-const vector<Bus> &Data::getBuses() {
-    return buses;
-}
+
 
 bool Data::readData(Graph &g, string filename) {
     fstream file(filename);
@@ -29,14 +27,13 @@ bool Data::readData(Graph &g, string filename) {
     iss1 >> nr_stops >> nr_buses;
     g.setNrStops(nr_stops);
     g.setNrBuses(nr_buses);
-
     while (getline(file, line)) {
         id++;
         int source, target, capacity, duration;
         istringstream iss(line);
         iss >> source >> target >> capacity >> duration;
         Bus p{source, target, capacity, duration};
-        buses.push_back(p);
+        g.addBus(source, target, capacity, duration);
     }
     file.close();
     return true;

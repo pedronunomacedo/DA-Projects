@@ -16,7 +16,7 @@ void Scenario1::printpath(vector<int> &parent, int vertex, int target) {
     cout << vertex << (vertex == target ? "\n" : "--");
 }
 
-int Scenario1::widest_path_problem(vector<vector<tuple<int, int, int>>> &Graph, int src, int target) {
+int Scenario1::scenario1_1(vector<vector<tuple<int, int, int>>> &Graph, int src, int target) {
     // To keep track of widest distance
     vector<int> widest(Graph.size(), INT_MIN);
 

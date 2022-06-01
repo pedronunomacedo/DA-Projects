@@ -14,7 +14,7 @@ private:
 public:
     Scenario1();
     void printpath(vector<int>& parent, int vertex, int target);
-    int widest_path_problem(vector<vector<tuple<int, int, int> > >& Graph, int src, int target);
+    int scenario1_1(vector<vector<tuple<int, int, int> > >& Graph, int src, int target);
 };
 
 

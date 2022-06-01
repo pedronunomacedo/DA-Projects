@@ -15,7 +15,7 @@ using namespace std;
 class Data {
 
 private:
-    vector<Bus> buses;
+
     Graph g;
 public:
     Data();

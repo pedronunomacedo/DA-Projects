@@ -36,16 +36,20 @@ private:
     int nr_stops;
     vector<Stop> stops;
     int nr_buses;
+    vector<Bus> buses;
 
 public:
     Graph();
+    bool readData(string filename);
     void setNrStops(int num_stops);
     void setNrBuses(int num_buses);
     int getNrStops() const;
     int getNrBuses() const;
     explicit Graph(int stops, bool dir = false);
     void addBus(int src, int dest, int capacity, int duration);
-    vector<Stop> getNodes() { return stops; };
+    vector<Stop> getStops() { return stops; };
+    const vector<Stop> &getStops() const;
+    vector<Bus>& getBuses();
 };
 
 #endif //PROJECT2_DA_GRAPH_H
