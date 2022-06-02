@@ -5,7 +5,7 @@
 #ifndef PROJECT2_DA_SCENARIO2_H
 #define PROJECT2_DA_SCENARIO2_H
 
-#define V 7
+#define V 50
 #include <vector>
 using namespace std;
 
@@ -15,9 +15,8 @@ private:
 
 public:
     Scenario2();
-    int Scenario2_1();
-    int scenario2_2(vector<vector<int> > graph, int s, int t);
-    bool bfs(vector<vector<int> > graph, int s, int t, int parent[]);
+    int scenario2_1(vector<vector<int> > graph, int s, int t);
+    bool bfs(vector<vector<int> > graph, int s, int t, vector<int> &parent);
     int scenario2_3(vector<vector<int> > graph, int s, int t);
 };
 

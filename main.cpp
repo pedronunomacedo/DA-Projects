@@ -51,12 +51,13 @@ int main() {
         }
 
     }
-    for (int i = 0; i < 6; i++) {
-        for (int j = 0; j < 6; j++) {
+    for (int i = 0; i < 50; i++) {
+        for (int j = 0; j < 50; j++) {
             cout << mygraph[i][j] << " ";
         }
         cout << endl;
     }
+    cout << endl << endl;
 
 
     /*for (int i = 0; i < g.getNrStops(); ++i) {
@@ -69,9 +70,9 @@ int main() {
     Scenario2 scenario2;
 
 
-    cout << "1.1: " << scenario1.scenario1_1(graph, 1, 6) << endl << endl;
-    cout << "2.2: " << scenario2.scenario2_2(mygraph, 1, 6) << endl;
-    cout << "2.3: " << scenario2.scenario2_3(mygraph, 1, 6) << endl;
+    cout << "1.1: " << scenario1.scenario1_1(graph, 1, 50) << endl << endl;
+    cout << "2.1: " << scenario2.scenario2_1(mygraph, 1, 50) << endl;
+    cout << "2.3: " << scenario2.scenario2_3(mygraph, 1, 50) << endl;
 
     return 0;
 }
