@@ -13,7 +13,7 @@ Graph::Graph(int num, bool stops) : nr_stops(num), stops(num + 1) {}
 void Graph::addBus(int src, int dest, int capacity, int duration) {
     if (src < 1 || src > nr_stops || dest < 1 || dest > nr_stops || capacity < 1 || capacity > nr_stops || duration < 1 || duration > nr_stops )
         return;
-    stops[src].adj.push_back({src, dest,capacity,duration});
+    stops[src-1].adj.push_back({src, dest,capacity,duration});
 
 }
 

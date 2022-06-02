@@ -35,8 +35,8 @@ int Scenario2::scenario2_2(vector<vector<int> > graph, int s, int t)
     // indicates residual capacity of edge
     // from i to j (if there is an edge. If
     // rGraph[i][j] is 0, then there is not)
-    for (u = 1; u <= V; u++) {
-        for (j = 1; j <= V; j++) {
+    for (u = 0; u < V; u++) {
+        for (j = 0; j < V; j++) {
             rGraph[u][j] = graph[u][j];
         }
     }

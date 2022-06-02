@@ -61,7 +61,7 @@ int Scenario1::scenario1_1(vector<vector<tuple<int, int, int>>> &Graph, int src,
         }
     }
 
-    printpath(parent, target, target);
-
+    cout << "The path is: "; printpath(parent, target, target);
+    cout << "     The maximum capacity is: ";
     return widest[target];
 }
