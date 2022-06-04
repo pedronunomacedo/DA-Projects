@@ -3,4 +3,4 @@ project(project2_DA)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(project2_DA main.cpp Classes/graph.cpp Classes/graph.h Classes/menu.cpp Classes/menu.h Classes/Data.cpp Classes/Data.h Classes/Scenario1.cpp Classes/Scenario1.h Classes/Scenario2.cpp Classes/Scenario2.h)
+add_executable(project2_DA main.cpp Classes/graph.cpp Classes/graph.h Classes/menu.cpp Classes/menu.h Classes/Scenario1.cpp Classes/Scenario1.h Classes/Scenario2.cpp Classes/Scenario2.h)
