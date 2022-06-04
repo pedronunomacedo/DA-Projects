@@ -24,17 +24,10 @@ int main() {
         graph[bus.src].push_back(make_tuple(bus.capacity, bus.dest, bus.duration));
     }
 
-    //cout << scenario1.scenario1_1(graph, 1, 50);
-
-
-
 
     //Scenario 2.1
 
-    //Scenario2 scenario2;
-
-    //int graph2[g.getNrStops()][g.getNrStops()];
-    vector<vector<int> > mygraph(51 , vector<int> (51));
+    vector<vector<int> > mygraph(graph.size() , vector<int> (graph.size()));
 
     //memset(graph2, 0, 60 * 50);
     for (int i = 0; i <= g.getNrStops(); i++) {
@@ -51,13 +44,13 @@ int main() {
         }
 
     }
-    for (int i = 0; i < 50; i++) {
+    /*for (int i = 0; i < 50; i++) {
         for (int j = 0; j < 50; j++) {
             cout << mygraph[i][j] << " ";
         }
         cout << endl;
     }
-    cout << endl << endl;
+    cout << endl << endl;*/
 
 
     /*for (int i = 0; i < g.getNrStops(); ++i) {
@@ -69,9 +62,9 @@ int main() {
 
     Scenario2 scenario2;
 
-
+    cout << endl << endl;
     cout << "1.1: " << scenario1.scenario1_1(graph, 1, 50) << endl << endl;
-    cout << "2.1: " << scenario2.scenario2_1(mygraph, 1, 50) << endl;
+    cout << "2.1: "; scenario2.scenario2_1(mygraph, 1, 50); cout << endl;
     cout << "2.3: " << scenario2.scenario2_3(mygraph, 1, 50) << endl;
 
     return 0;
