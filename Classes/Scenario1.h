@@ -15,6 +15,8 @@ public:
     Scenario1();
     void printpath(vector<int>& parent, int vertex, int target);
     int scenario1_1(vector<vector<tuple<int, int, int> > >& Graph, int src, int target);
+    void scenario1_2(vector<vector<tuple<int, int, int> > >& Graph, int source, int target);
+    void bfs(int s, vector<vector<tuple<int, int, int>>> &Graph);
 };
 
 

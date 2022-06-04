@@ -6,7 +6,11 @@
 
 using namespace std;
 
+
 int main() {
+
+
+//////////////////////////////////////
 
     Scenario1 scenario1;
     vector<Bus> buses;
@@ -24,6 +28,43 @@ int main() {
         graph[bus.src].push_back(make_tuple(bus.capacity, bus.dest, bus.duration));
     }
 
+
+//////////////////////////////////////////
+/*
+    int ç = 1;
+    vector<bool> visited;
+    visited.resize(50,false);
+
+    // Create a queue for BFS
+    list<int> queue;
+
+    // Mark the current node as visited and enqueue it
+    visited[ç] = true;
+    queue.push_back(ç);
+
+    while(!queue.empty())
+    {
+        // Dequeue a vertex from queue and print it
+        ç = queue.front();
+        cout << ç << " ";
+        queue.pop_front();
+
+        // Get all adjacent vertices of the dequeued
+        // vertex s. If a adjacent has not been visited,
+        // then mark it visited and enqueue it
+        for (auto adjecent: graph[ç])
+        {
+            if (!visited[get<1>(adjecent)])
+            {
+                visited[get<1>(adjecent)] = true;
+                queue.push_back(get<1>(adjecent));
+            }
+        }
+    }
+
+*/
+
+//////////////////////////////////////////
 
     //Scenario 2.1
 
@@ -60,12 +101,19 @@ int main() {
         cout << endl;
     }*/
 
+
+
+//////////////////////////////////////////////////////
+
     Scenario2 scenario2;
 
     cout << endl << endl;
     cout << "1.1: " << scenario1.scenario1_1(graph, 1, 50) << endl << endl;
     cout << "2.1: "; scenario2.scenario2_1(mygraph, 1, 50); cout << endl;
     cout << "2.3: " << scenario2.scenario2_3(mygraph, 1, 50) << endl;
+
+    cout << endl;
+    scenario1.bfs(1, graph);
 
     return 0;
 }
