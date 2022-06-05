@@ -18,7 +18,12 @@ Scenario2::Scenario2() {
 
 }
 
-void Scenario2::scenario2_1(vector<vector<int> > graph, int s, int t)
+void Scenario2::setNrVertices(int v) {
+    no_vertices = v;
+}
+
+
+void Scenario2::scenario2_1(vector<vector<int> > graph, int s, int t, int size)
 {
     int u, j;
 
@@ -33,7 +38,7 @@ void Scenario2::scenario2_1(vector<vector<int> > graph, int s, int t)
     vector<int> parent(graph.size()-1, 0);
 
     int max_flow = 0;
-    int numPeople = 6; // Ask the user for a number!!!!!!
+    int numPeople = size;
 
 
     while (bfs(rGraph, s, t, parent) && max_flow < numPeople) {
@@ -146,6 +151,6 @@ void Scenario2::printPath2(vector<int> &parent, int source, int target) {
     cout << target;
 }
 
-void Scenario2::scenario2_2(vector<vector<int>> graph, int s, int t) {
-    scenario2_1(graph, s, t);
+void Scenario2::scenario2_2(vector<vector<int>> graph, int s, int t, int size) {
+    scenario2_1(graph, s, t, size);
 }

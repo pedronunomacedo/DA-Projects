@@ -10,14 +10,14 @@
 
 class Scenario1 {
 private:
-    vector<Bus> buses;
-    vector<list<int>> adj;
     int V;
 public:
-    Scenario1(int V);
+    Scenario1();
+    void setNrVertices(int v);
     void printpath(vector<int>& parent, int vertex, int target);
     int scenario1_1(vector<vector<tuple<int, int, int> > >& Graph, int src, int target);
-    vector<list<int>> getAdj() {return adj;}
+    void scenario1_2(vector<int> adj[], int s, int dest, int v);
+    //vector<list<int>> getAdj() {return adj;}
 };
 
 

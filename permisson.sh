@@ -1,0 +1,1 @@
+chmod u+r+x clear.sh
