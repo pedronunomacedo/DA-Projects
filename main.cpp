@@ -153,7 +153,7 @@ int main() {
         add_edge(adj, bus3.src, bus3.dest);
     }
 
-    int source = 1, dest = 40;
+    int source = 1, dest = 50;
 
 
     ///////////////////////////////////////////////////////////////
@@ -165,6 +165,7 @@ int main() {
     cout << "1.1: " << scenario1.scenario1_1(graph, 1, 50) << endl << endl;
     cout << "1.2: The shortest path is: "; printShortestDistance(adj, source, dest, v); cout << endl << endl;
     cout << "2.1: "; scenario2.scenario2_1(mygraph, 1, 50); cout << endl;
+    cout << "2.2: "; scenario2.scenario2_2(mygraph, 1, 50); cout << endl;
     cout << "2.3: " << scenario2.scenario2_3(mygraph, 1, 50) << endl;
 
     return 0;

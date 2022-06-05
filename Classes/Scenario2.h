@@ -15,8 +15,9 @@ private:
 public:
     Scenario2();
     void printPath2(vector<int>& parent, int source, int target);
-    void scenario2_1(vector<vector<int> > graph, int s, int t);
     bool bfs(vector<vector<int> > &rGraph, int s, int t, vector<int> &parent);
+    void scenario2_1(vector<vector<int> > graph, int s, int t);
+    void scenario2_2(vector<vector<int> > graph, int s, int t);
     int scenario2_3(vector<vector<int> > graph, int s, int t);
 };
 

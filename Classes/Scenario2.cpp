@@ -145,3 +145,7 @@ void Scenario2::printPath2(vector<int> &parent, int source, int target) {
     }
     cout << target;
 }
+
+void Scenario2::scenario2_2(vector<vector<int>> graph, int s, int t) {
+    scenario2_1(graph, s, t);
+}
