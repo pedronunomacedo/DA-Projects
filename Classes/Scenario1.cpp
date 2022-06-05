@@ -2,9 +2,13 @@
 // Created by gonzallito on 30-05-2022.
 //
 
+#include <cstring>
 #include "Scenario1.h"
 
-Scenario1::Scenario1() {}
+Scenario1::Scenario1(int V) {
+    this->V = V;
+    adj.resize(V);
+}
 
 void Scenario1::printpath(vector<int> &parent, int vertex, int target) {
     if (vertex == 0) {
@@ -55,41 +59,50 @@ int Scenario1::scenario1_1(vector<vector<tuple<int, int, int>>> &Graph, int src,
     return widest[target];
 }
 
-void Scenario1::scenario1_2(vector<vector<tuple<int, int, int>>> &Graph, int source, int target) {
 
-}
+void Scenario1::bfs(int v){
 
-
-void Scenario1::bfs(int s, vector<vector<tuple<int, int, int>>> &Graph){
-    // Mark all the vertices as not visited
-    // Mark all the vertices as not visited
+/*
     vector<bool> visited;
-    visited.resize(50,false);
+    visited.resize(V,false);
 
-    // Create a queue for BFS
     list<int> queue;
 
-    // Mark the current node as visited and enqueue it
     visited[s] = true;
     queue.push_back(s);
 
     while(!queue.empty())
     {
-        // Dequeue a vertex from queue and print it
         s = queue.front();
-        cout << s << "--";
+        cout << s << " ";
         queue.pop_front();
 
-        // Get all adjacent vertices of the dequeued
-        // vertex s. If a adjacent has not been visited,
-        // then mark it visited and enqueue it
-        for (auto adjecent: Graph[s])
+        for (auto adjecent: adj[s])
         {
-            if (!visited[get<1>(adjecent)])
+            if (!visited[adjecent])
             {
-                visited[get<1>(adjecent)] = true;
-                queue.push_back(get<1>(adjecent));
+                visited[adjecent] = true;
+                queue.push_back(adjecent);
+            }
+        }
+    }*/
+    vector<bool> nodes(51, false);
+    queue<int> q;
+    q.push(v);
+    nodes[v] = true;
+    while (!q.empty()) {
+        int u = q.front();
+        q.pop();
+        cout << u << " ";
+        for (auto e : adj[v]) {
+            if (!nodes[e]) {
+                q.push(e);
+                nodes[e] = true;
             }
         }
     }
+}
+
+void Scenario1::addEdge(int v, int w) {
+    adj[v].push_back(w);
 }

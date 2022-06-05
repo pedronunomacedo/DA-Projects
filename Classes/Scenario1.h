@@ -11,12 +11,15 @@
 class Scenario1 {
 private:
     vector<Bus> buses;
+    vector<list<int>> adj;
+    int V;
 public:
-    Scenario1();
+    Scenario1(int V);
+    void addEdge(int v, int w);
     void printpath(vector<int>& parent, int vertex, int target);
     int scenario1_1(vector<vector<tuple<int, int, int> > >& Graph, int src, int target);
-    void scenario1_2(vector<vector<tuple<int, int, int> > >& Graph, int source, int target);
-    void bfs(int s, vector<vector<tuple<int, int, int>>> &Graph);
+    void bfs(int v);  //, int t, vector<vector<tuple<int, int, int>>> &Graph, vector<int> &parent
+    vector<list<int>> getAdj() {return adj;}
 };
 
 
