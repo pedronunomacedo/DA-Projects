@@ -3,10 +3,14 @@
 //
 
 
+#include <stack>
+#include <set>
 #include "Scenario2.h"
+#include "graph.h"
 
 Scenario2::Scenario2() {
-
+    g.readData("../files/Tests_B/in01_b.txt");
+    stops = g.getStops();
 }
 
 void Scenario2::setNrVertices(int v) {
@@ -58,6 +62,8 @@ bool Scenario2::bfs(vector<vector<int> > &rGraph, int s, int t, vector<int> &par
 }
 
 void Scenario2::scenario2_1(vector<vector<int> > graph, int s, int t, int size) {
+    g.readData("../files/Tests_B/in01_b.txt");
+    stops = g.getStops();
     int u, j;
 
     vector<vector<int> > rGraph(graph.size()-1 , vector<int> (graph.size()-1)); // Residual graph where rGraph[i][j]
@@ -91,8 +97,17 @@ void Scenario2::scenario2_1(vector<vector<int> > graph, int s, int t, int size) 
         max_flow += path_flow;
     }
 
-    cout << " The path is: ";
-    printPath(parent, s, t); cout << endl;
+    for (int i = 0; i < rGraph.size(); i++) {
+        for (Bus e : stops[i].adj) {
+            int e_flow = rGraph[e.dest-1][i];
+            if (e_flow > 0) {
+                cout << i+1 << "---->" << e.dest << "     flow: "  << e_flow << endl;
+            }
+        }
+    }
+
+    //cout << " The path is: ";
+    //printPath(parent, s, t); cout << endl;
 }
 
 void Scenario2::scenario2_2(vector<vector<int>> graph, int s, int t, int size) {
@@ -131,12 +146,89 @@ void Scenario2::scenario2_3(vector<vector<int> > graph, int s, int t) {
         max_flow += path_flow;
     }
 
-    cout << " The path is: ";
-    printPath(parent, s, t); cout << endl;
-    cout << " The max flow is: " << max_flow << endl ;
+    for (int i = 0; i < rGraph.size(); i++) {
+        for (Bus e : stops[i].adj) {
+            int e_flow = rGraph[e.dest-1][i];
+            if (e_flow > 0) {
+                cout << i+1 << "---->" << e.dest << "     flow: "  << e_flow << endl;
+            }
+        }
+    }
+
+    cout << endl;
+    cout << "The max flow is: " << max_flow << endl ;
 }
 
-void Scenario2::scenario2_4(vector<vector<int>> graph, int s, int t, int size) {
+void Scenario2::scenario2_4(vector<vector<int>> graph){
+    queue<int> fila;
+    int n = g.getNrStops();
+    for(int v = 1; v <= n; v++) {
+        stops[v].ES= 0; // data + proxima p/ caminhos com inicio em v
+        stops[v].pred= 0; // nó anterior do v é 0
+        stops[v].GrauE = 0; //grau entrada do v
+    }
+
+    for(int v = 1; v <= n; v++) {
+        for(auto a : stops[v].adj) {
+            stops[a.dest-1].GrauE++;
+        }
+    }
+
+    for(int v = 1; v <= n; v++) {
+        if(stops[v].GrauE != 0)
+            fila.push(v);
+    }
+
+    //set<int> paragens = {1, 3, 6, 8, 9, 12, 19, 21, 22, 23, 29, 31, 33, 38, 39, 41, 44, 45, 46, 50};
+    set<int> paragens = {1, 6, 8, 38, 33, 10, 46, 48, 27, 36, 50, 39, 44, 40, 22, 41, 45, 17, 35, 29, 31, 19, 12};
+
+
+
+    int duracaominima = -1;
+    int x;
+    while (!fila.empty()) {
+        x = fila.front();
+        fila.pop();
+        if (duracaominima < stops[x].ES){
+            duracaominima = stops[x].ES;
+        }
+        for(auto a : stops[x].adj) {
+            if (paragens.find(a.dest) != paragens.end()) {
+                if (stops[a.dest - 1].ES < stops[a.dest - 1].ES + a.duration) {
+                    stops[a.dest - 1].ES = stops[a.dest - 1].ES + a.duration;
+                    stops[a.dest - 1].pred = x;
+                }
+            }
+            stops[a.dest-1].GrauE = stops[a.dest-1].GrauE--;
+
+            if(stops[a.dest-1].GrauE == 0) {
+                fila.push(a.dest);
+            }
+        }
+
+        /*for(int v = 0; v < pilha.size(); v++) {
+            if(duracaominima < stops[v+1].ES) {
+                duracaominima = stops[v+1].ES;
+            }
+
+            for(int v = 1; v <= n; v++) {
+                for(auto a : stops[v].adj) {
+                    if (paragens.find(a.dest) != paragens.end()) {
+                        if (stops[a.dest - 1].ES < stops[a.dest - 1].ES + a.duration) {
+                            stops[a.dest - 1].ES = stops[a.dest - 1].ES + a.duration;
+                            stops[a.dest - 1].pred = v;
+                        }
+                    }
+                    stops[a.dest-1].GrauE = stops[a.dest-1].GrauE--;
+
+                    if(stops[a.dest-1].GrauE == 0) {
+                        pilha.push(a.dest-1);
+                    }
+                }
+            }
+        }*/
+    }
+    cout << duracaominima;
 
 }
 

@@ -28,6 +28,8 @@ struct Stop {
     double dist;
     int pred;
     bool visited;
+    double ES;
+    int GrauE;
 };
 
 

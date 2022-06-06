@@ -1,9 +1,13 @@
 #include "menu.h"
 
 Menu::Menu() {
-    g.readData("../files/Tests_B/in01_b.txt");
+    cout << "Enter the file: ";
+    string fileName;
+    cin >> fileName;
+    g.readData("../files/Tests_B/" + fileName);
     buses = g.getBuses();
     no_vertices = g.getNrStops();
+    stops = g.getStops();
 
     graph.assign(no_vertices + 1, vector<tuple<int, int, int> >());
     for (auto & bus : buses) {
@@ -188,10 +192,10 @@ tuple<int,int,int> Menu::showMenuScenario2_4() {
     cout << " ||                   at least                                                        ||" << endl;
     cout << " =======================================================================================" << endl;
     cout << endl;
-
+/*
     cout << " > Source: "; cin >> source;
     cout << " > Target: "; cin >> target;
-    cout << " > Size: "; cin >> size;
+    cout << " > Size: "; cin >> size;*/
     cout << endl;
 
     return {source,target,size};
@@ -304,7 +308,7 @@ void Menu::run() {
                         int source = get<0>(result);
                         int target = get<1>(result);
                         int size = get<2>(result);
-                        scenario2.scenario2_4(mygraph, source, target, size);
+                        scenario2.scenario2_4(mygraph);
                     }
                     else if (option == 5) { // 2.5 - Assuming that the elements that leave the same place leave that place at the same time (and as early as possible), indicate the maximum waiting time and the places where there would be elements that wait that time
 

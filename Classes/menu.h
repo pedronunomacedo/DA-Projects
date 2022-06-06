@@ -19,6 +19,7 @@ using namespace std;
 class Menu {
 private:
     vector<Bus> buses;
+    vector<Stop> stops;
     Graph g;
     vector<vector<tuple<int, int, int> > > graph;
     int no_vertices;
