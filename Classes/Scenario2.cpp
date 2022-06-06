@@ -9,7 +9,7 @@
 #include "graph.h"
 
 Scenario2::Scenario2() {
-    g.readData("../files/Tests_B/in07_b.txt");
+    g.readData("../files/Tests_B/in01_b.txt");
     stops = g.getStops();
 }
 
@@ -48,7 +48,7 @@ bool Scenario2::bfs(vector<vector<int> > &rGraph, int s, int t, vector<int> &par
 }
 
 void Scenario2::scenario2_1(vector<vector<int> > graph, int s, int t, int size) {
-    g.readData("../files/Tests_B/in07_b.txt");
+    g.readData("../files/Tests_B/in01_b.txt");
     stops = g.getStops();
     int u, j;
 
@@ -193,6 +193,9 @@ void Scenario2::scenario2_4(vector<vector<int>> graph){
     cout << "The group would meet up again at the destination after:   " << duracaominima << " mins" << endl;
 }
 
-void Scenario2::scenario2_5(vector<vector<int>> graph, int s, int t) {
+void Scenario2::scenario2_5(vector<vector<int>> graph) {
+    int max = -1;
+    for (auto v : stops) {
 
+    }
 }
