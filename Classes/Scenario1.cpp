@@ -3,6 +3,7 @@
 //
 
 #include "Scenario1.h"
+#include <chrono>
 
 Scenario1::Scenario1() {
 
@@ -58,6 +59,15 @@ bool Scenario1::BFS(vector<int> adj[], int src, int dest, int v, int pred[], int
 
 
 int Scenario1::scenario1_1(vector<vector<tuple<int,int,int>>> &Graph, int src, int target) {
+
+    ///////////////////////////////////////////////////////////////////////////
+
+    chrono::time_point<chrono::system_clock> start, end;
+
+    start = chrono::system_clock::now();
+
+    ///////////////////////////////////////////////////////////////////////////
+
     vector<int> widest(Graph.size(), INT_MIN);
 
     vector<int> parent(Graph.size(), 0);
@@ -91,12 +101,31 @@ int Scenario1::scenario1_1(vector<vector<tuple<int,int,int>>> &Graph, int src, i
         }
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////
+
+    end = chrono::system_clock::now();
+
+    chrono::duration<double> elapsed_seconds = end - start;
+
+    cout << "algorithm time: " << elapsed_seconds.count() * 1000  << " ms" << endl;
+
+    ///////////////////////////////////////////////////////////////////////////////////////
+
     cout << endl << " The path is: "; printpath(parent, target, target);
     cout << " The maximum capacity is: ";
     return widest[target];
 }
 
 void Scenario1::scenario1_2(vector<int> adj[], int s, int dest, int v) {
+
+    ///////////////////////////////////////////////////////////////////////////
+
+    chrono::time_point<chrono::system_clock> start, end;
+
+    start = chrono::system_clock::now();
+
+    ///////////////////////////////////////////////////////////////////////////
+
     int pred[v+1], dist[v+1];
     if (!BFS(adj, s, dest, v+1, pred, dist)) {
         cout << "Given source and destination are not connected";
@@ -109,6 +138,16 @@ void Scenario1::scenario1_2(vector<int> adj[], int s, int dest, int v) {
         path.push_back(pred[crawl]);
         crawl = pred[crawl];
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////
+
+    end = chrono::system_clock::now();
+
+    chrono::duration<double> elapsed_seconds = end - start;
+
+    cout << "algorithm time: " << elapsed_seconds.count() * 1000  << " ms" << endl;
+
+    ///////////////////////////////////////////////////////////////////////////////////////
 
     cout << endl << " The path is : ";
     for (int i = path.size() - 1; i >= 0; i--) {

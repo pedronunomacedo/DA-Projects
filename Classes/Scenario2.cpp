@@ -7,9 +7,11 @@
 #include <set>
 #include "Scenario2.h"
 #include "graph.h"
+#include <chrono>
 
 Scenario2::Scenario2() {
-    g.readData("../files/Tests_B/in01_b.txt");
+    g.readData("../files/Tests_B/in05"
+               "_b.txt");
     stops = g.getStops();
 }
 
@@ -48,11 +50,18 @@ bool Scenario2::bfs(vector<vector<int> > &rGraph, int s, int t, vector<int> &par
 }
 
 void Scenario2::scenario2_1(vector<vector<int> > graph, int s, int t, int size) {
-    g.readData("../files/Tests_B/in01_b.txt");
-    stops = g.getStops();
+
+    ///////////////////////////////////////////////////////////////////////////
+
+    chrono::time_point<chrono::system_clock> start, end;
+
+    start = chrono::system_clock::now();
+
+    ///////////////////////////////////////////////////////////////////////////
+
     int u, j;
 
-    vector<vector<int> > rGraph(graph.size()-1 , vector<int> (graph.size()-1)); // Residual graph where rGraph[i][j]
+    vector<vector<int> > rGraph(graph.size()-1 , vector<int> (graph.size()-1)); // Residual graph
 
     for (u = 0; u < graph.size()-1; u++) {
         for (j = 0; j < graph.size()-1; j++) {
@@ -83,6 +92,16 @@ void Scenario2::scenario2_1(vector<vector<int> > graph, int s, int t, int size) 
         max_flow += path_flow;
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////
+
+    end = chrono::system_clock::now();
+
+    chrono::duration<double> elapsed_seconds = end - start;
+
+    cout << "algorithm time: " << elapsed_seconds.count() * 1000  << " ms" << endl;
+
+    ///////////////////////////////////////////////////////////////////////////////////////
+
     for (int i = 0; i < rGraph.size(); i++) {
         for (Bus e : stops[i].adj) {
             int e_flow = rGraph[e.dest-1][i];
@@ -95,10 +114,38 @@ void Scenario2::scenario2_1(vector<vector<int> > graph, int s, int t, int size) 
 }
 
 void Scenario2::scenario2_2(vector<vector<int>> graph, int s, int t, int size) {
+
+    ///////////////////////////////////////////////////////////////////////////
+
+    chrono::time_point<chrono::system_clock> start, end;
+
+    start = chrono::system_clock::now();
+
+    ///////////////////////////////////////////////////////////////////////////
+
     scenario2_1(graph, s, t, size);
+
+    ///////////////////////////////////////////////////////////////////////////////////////
+
+    end = chrono::system_clock::now();
+
+    chrono::duration<double> elapsed_seconds = end - start;
+
+    cout << "algorithm time: " << elapsed_seconds.count() * 1000  << " ms" << endl;
+
+    ///////////////////////////////////////////////////////////////////////////////////////
 }
 
 void Scenario2::scenario2_3(vector<vector<int> > graph, int s, int t) {
+
+    ///////////////////////////////////////////////////////////////////////////
+
+    chrono::time_point<chrono::system_clock> start, end;
+
+    start = chrono::system_clock::now();
+
+    ///////////////////////////////////////////////////////////////////////////
+
     int u, j;
 
     vector<vector<int> > rGraph(graph.size()-1 , vector<int> (graph.size()-1));
@@ -143,12 +190,31 @@ void Scenario2::scenario2_3(vector<vector<int> > graph, int s, int t) {
         }
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////
+
+    end = chrono::system_clock::now();
+
+    chrono::duration<double> elapsed_seconds = end - start;
+
+    cout << "algorithm time: " << elapsed_seconds.count() * 1000  << " ms" << endl;
+
+    ///////////////////////////////////////////////////////////////////////////////////////
+
 
     cout << endl;
     cout << "The max flow is: " << max_flow << endl ;
 }
 
 void Scenario2::scenario2_4(vector<vector<int>> graph){
+
+    ///////////////////////////////////////////////////////////////////////////
+
+    chrono::time_point<chrono::system_clock> start, end;
+
+    start = chrono::system_clock::now();
+
+    ///////////////////////////////////////////////////////////////////////////
+
     queue<int> fila;
     int n = g.getNrStops();
     for(int v = 1; v <= n; v++) {
@@ -190,6 +256,17 @@ void Scenario2::scenario2_4(vector<vector<int>> graph){
             }
         }
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////
+
+    end = chrono::system_clock::now();
+
+    chrono::duration<double> elapsed_seconds = end - start;
+
+    cout << "algorithm time: " << elapsed_seconds.count() * 1000  << " ms" << endl;
+
+    ///////////////////////////////////////////////////////////////////////////////////////
+
     cout << "The group would meet up again at the destination after:   " << duracaominima << " mins" << endl;
 }
 
