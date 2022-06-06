@@ -2,7 +2,6 @@
 // Created by gonzallito on 30-05-2022.
 //
 
-#include <cstring>
 #include "Scenario1.h"
 
 Scenario1::Scenario1() {
@@ -23,7 +22,7 @@ void Scenario1::printpath(vector<int> &parent, int vertex, int target) {
     cout << vertex << (vertex == target ? "\n" : "--");
 }
 
-bool BFS(vector<int> adj[], int src, int dest, int v, int pred[], int dist[]) {
+bool Scenario1::BFS(vector<int> adj[], int src, int dest, int v, int pred[], int dist[]) {
     list<int> queue;
 
     bool visited[v];
@@ -92,8 +91,8 @@ int Scenario1::scenario1_1(vector<vector<tuple<int,int,int>>> &Graph, int src, i
         }
     }
 
-    cout << "The path is: "; printpath(parent, target, target);
-    cout << "     The maximum capacity is: ";
+    cout << endl << " The path is: "; printpath(parent, target, target);
+    cout << " The maximum capacity is: ";
     return widest[target];
 }
 
@@ -110,6 +109,8 @@ void Scenario1::scenario1_2(vector<int> adj[], int s, int dest, int v) {
         path.push_back(pred[crawl]);
         crawl = pred[crawl];
     }
+
+    cout << endl << " The path is : ";
     for (int i = path.size() - 1; i >= 0; i--) {
         if (i != 0) cout << path[i] << "--";
         else cout << path[i];

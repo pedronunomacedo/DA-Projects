@@ -4,10 +4,13 @@
 
 #ifndef PROJECT2_DA_MENU_H
 #define PROJECT2_DA_MENU_H
+#include <stdlib.h>
+#include <iostream>
 #include <vector>
 #include <map>
-#include <iostream>
 #include <fstream>
+#include <string>
+#include <climits>
 #include "Scenario1.h"
 #include "Scenario2.h"
 
@@ -23,11 +26,17 @@ private:
     Scenario2 scenario2;
 public:
     Menu();
-    void run();
+    bool pass();
+    void mainMenu() const;
     void add_edge(vector<int> adj[], int src, int dest);
     void showMenuScenario1();
+    tuple<int,int> showMenuScenario1_1();
+    tuple<int,int> showMenuScenario1_2();
     void showMenuScenario2();
-    void mainMenu() const;
-    bool pass();
+    tuple<int,int,int> showMenuScenario2_1();
+    tuple<int,int,int> showMenuScenario2_2(int opt);
+    tuple<int,int> showMenuScenario2_3();
+    tuple<int,int,int> showMenuScenario2_4();
+    void run();
 };
 #endif //PROJECT2_DA_MENU_H

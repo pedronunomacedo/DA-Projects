@@ -5,8 +5,9 @@
 #ifndef PROJECT2_DA_GRAPH_H
 #define PROJECT2_DA_GRAPH_H
 
-#include <list>
+#include <stdlib.h>
 #include <iostream>
+#include <list>
 #include <vector>
 #include <map>
 #include <fstream>
@@ -23,7 +24,7 @@ struct Bus {
 };
 
 struct Stop {
-    list<Bus> adj;
+    vector<Bus> adj;
     double dist;
     int pred;
     bool visited;
