@@ -9,26 +9,12 @@
 #include "graph.h"
 
 Scenario2::Scenario2() {
-    g.readData("../files/Tests_B/in01_b.txt");
+    g.readData("../files/Tests_B/in07_b.txt");
     stops = g.getStops();
 }
 
 void Scenario2::setNrVertices(int v) {
     no_vertices = v;
-}
-
-void Scenario2::printPath(vector<int> &parent, int source, int target) {
-    vector<int> path;
-    for (int i = target; i > source; i = (parent[i-1]+1)) {
-        path.push_back(parent[i-1]+1);
-        if(parent[i-1]+1 == source)
-            break;
-    }
-    reverse(path.begin(), path.end());
-    for (int i : path) {
-        cout << i << "--";
-    }
-    cout << target;
 }
 
 bool Scenario2::bfs(vector<vector<int> > &rGraph, int s, int t, vector<int> &parent) {
@@ -62,7 +48,7 @@ bool Scenario2::bfs(vector<vector<int> > &rGraph, int s, int t, vector<int> &par
 }
 
 void Scenario2::scenario2_1(vector<vector<int> > graph, int s, int t, int size) {
-    g.readData("../files/Tests_B/in01_b.txt");
+    g.readData("../files/Tests_B/in07_b.txt");
     stops = g.getStops();
     int u, j;
 
@@ -106,8 +92,6 @@ void Scenario2::scenario2_1(vector<vector<int> > graph, int s, int t, int size) 
         }
     }
 
-    //cout << " The path is: ";
-    //printPath(parent, s, t); cout << endl;
 }
 
 void Scenario2::scenario2_2(vector<vector<int>> graph, int s, int t, int size) {
@@ -151,9 +135,14 @@ void Scenario2::scenario2_3(vector<vector<int> > graph, int s, int t) {
             int e_flow = rGraph[e.dest-1][i];
             if (e_flow > 0) {
                 cout << i+1 << "---->" << e.dest << "     flow: "  << e_flow << endl;
+                if (find(path.begin(), path.end(), i+1) == path.end())
+                    path.push_back(i+1);
+                if (find(path.begin(), path.end(), e.dest) == path.end())
+                    path.push_back(e.dest);
             }
         }
     }
+
 
     cout << endl;
     cout << "The max flow is: " << max_flow << endl ;
@@ -179,11 +168,6 @@ void Scenario2::scenario2_4(vector<vector<int>> graph){
             fila.push(v);
     }
 
-    //set<int> paragens = {1, 3, 6, 8, 9, 12, 19, 21, 22, 23, 29, 31, 33, 38, 39, 41, 44, 45, 46, 50};
-    set<int> paragens = {1, 6, 8, 38, 33, 10, 46, 48, 27, 36, 50, 39, 44, 40, 22, 41, 45, 17, 35, 29, 31, 19, 12};
-
-
-
     int duracaominima = -1;
     int x;
     while (!fila.empty()) {
@@ -193,7 +177,7 @@ void Scenario2::scenario2_4(vector<vector<int>> graph){
             duracaominima = stops[x].ES;
         }
         for(auto a : stops[x].adj) {
-            if (paragens.find(a.dest) != paragens.end()) {
+            if (find(path.begin(), path.end(), a.dest) != path.end()) {
                 if (stops[a.dest - 1].ES < stops[a.dest - 1].ES + a.duration) {
                     stops[a.dest - 1].ES = stops[a.dest - 1].ES + a.duration;
                     stops[a.dest - 1].pred = x;
@@ -205,31 +189,8 @@ void Scenario2::scenario2_4(vector<vector<int>> graph){
                 fila.push(a.dest);
             }
         }
-
-        /*for(int v = 0; v < pilha.size(); v++) {
-            if(duracaominima < stops[v+1].ES) {
-                duracaominima = stops[v+1].ES;
-            }
-
-            for(int v = 1; v <= n; v++) {
-                for(auto a : stops[v].adj) {
-                    if (paragens.find(a.dest) != paragens.end()) {
-                        if (stops[a.dest - 1].ES < stops[a.dest - 1].ES + a.duration) {
-                            stops[a.dest - 1].ES = stops[a.dest - 1].ES + a.duration;
-                            stops[a.dest - 1].pred = v;
-                        }
-                    }
-                    stops[a.dest-1].GrauE = stops[a.dest-1].GrauE--;
-
-                    if(stops[a.dest-1].GrauE == 0) {
-                        pilha.push(a.dest-1);
-                    }
-                }
-            }
-        }*/
     }
-    cout << duracaominima;
-
+    cout << "The group would meet up again at the destination after:   " << duracaominima << " mins" << endl;
 }
 
 void Scenario2::scenario2_5(vector<vector<int>> graph, int s, int t) {

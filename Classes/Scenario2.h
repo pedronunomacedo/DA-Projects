@@ -21,11 +21,11 @@ class Scenario2 {
 private:
     Graph g;
     vector<Stop> stops;
-    int no_vertices; // Variable never used (DELETE)!
+    vector<int> path;
+    int no_vertices;
 public:
     Scenario2();
     void setNrVertices(int v);
-    void printPath(vector<int>& parent, int source, int target);
     bool bfs(vector<vector<int> > &rGraph, int s, int t, vector<int> &parent);
     void scenario2_1(vector<vector<int> > graph, int s, int t, int size);
     void scenario2_2(vector<vector<int> > graph, int s, int t, int size);

@@ -181,9 +181,6 @@ tuple<int,int> Menu::showMenuScenario2_3() {
 }
 
 tuple<int,int,int> Menu::showMenuScenario2_4() {
-    int source;
-    int target;
-    int size;
 
     cout << endl;
     cout << " ======================================================================================" << endl;
@@ -192,13 +189,7 @@ tuple<int,int,int> Menu::showMenuScenario2_4() {
     cout << " ||                   at least                                                        ||" << endl;
     cout << " =======================================================================================" << endl;
     cout << endl;
-/*
-    cout << " > Source: "; cin >> source;
-    cout << " > Target: "; cin >> target;
-    cout << " > Size: "; cin >> size;*/
-    cout << endl;
 
-    return {source,target,size};
 }
 
 void Menu::run() {
@@ -305,9 +296,6 @@ void Menu::run() {
                     }
                     else if (option1 == 4) { // 2.4 - Starting from a route that constitutes an acyclic graph, determine when the group would meet again at the destination, at least
                         tuple<int,int,int> result = showMenuScenario2_4();
-                        int source = get<0>(result);
-                        int target = get<1>(result);
-                        int size = get<2>(result);
                         scenario2.scenario2_4(mygraph);
                     }
                     else if (option == 5) { // 2.5 - Assuming that the elements that leave the same place leave that place at the same time (and as early as possible), indicate the maximum waiting time and the places where there would be elements that wait that time
