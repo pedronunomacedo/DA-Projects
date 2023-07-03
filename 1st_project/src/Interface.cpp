@@ -398,7 +398,7 @@ void Interface::delC() {
  * Update the files in every change that we make while the program is running.
  */
 void Interface::updateFiles() {
-    ofstream myFile("../data/carrinhas.txt");
+    ofstream myFile("data/carrinhas.txt");
 
     for (Courier c : couriers) {
         myFile << c.getMaxVolume() << " " << c.getMaxWeight() << " " << c.getCost() << endl;
@@ -416,8 +416,8 @@ void Interface::updateFiles() {
  * When the program starts, we will need to read the files and save their content to use it later.
  */
 void Interface::readFiles() {
-    data.readCouriers("../data/carrinhas.txt");
-    data.readProducts("../data/encomendas.txt");
+    data.readCouriers("data/carrinhas.txt");
+    data.readProducts("data/encomendas.txt");
     couriers = data.getTrucks();
     products = data.getProducts();
     scenario1 = Scenario1(products, couriers);
